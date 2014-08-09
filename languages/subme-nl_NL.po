@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: SubMe v1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2014-08-05 07:40:49+0000\n"
+"PO-Revision-Date: 2014-08-09 13:05:26+0000\n"
 "Last-Translator: admin <wordpress@supongo.org>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -38,13 +38,13 @@ msgstr "Wachtrij"
 
 #: subme.php:179
 #: subme.php:248
-#: subme.php:1201
+#: subme.php:1237
 #@ subme
 msgid "Subscribe"
 msgstr "Aanmelden"
 
 #: subme.php:209
-#: subme.php:1162
+#: subme.php:1198
 #@ subme
 msgid "Thank you for confirming your subscription"
 msgstr "Bedankt voor het bevestigen van je inschrijving"
@@ -60,84 +60,84 @@ msgid "Something unexpected has happend."
 msgstr "Sorry, maar er is iets onverwachts gebeurd."
 
 #: subme.php:232
-#: subme.php:507
-#: subme.php:579
-#: subme.php:659
-#: subme.php:1185
+#: subme.php:529
+#: subme.php:604
+#: subme.php:695
+#: subme.php:1221
 #@ subme
 msgid "Sorry, but this does not seem like a valid email address."
 msgstr "Sorry, maar dit lijkt geen geldig e-mailadres te zijn."
 
 #: subme.php:250
-#: subme.php:1203
+#: subme.php:1239
 #@ subme
 msgid "Unsubscribe"
 msgstr "Afmelden"
 
-#: subme.php:518
-#: subme.php:588
+#: subme.php:540
+#: subme.php:627
 #@ subme
 msgid "Sorry, but this email address has already subscribed."
 msgstr "Sorry, maar dit e-mailadres is al ingeschreven."
 
-#: subme.php:607
-#: subme.php:685
-#: subme.php:1166
+#: subme.php:640
+#: subme.php:721
+#: subme.php:1202
 #@ subme
 msgid "Sorry, but something went wrong."
 msgstr "Sorry, maar er is iets onverwachts gebeurd."
 
-#: subme.php:617
+#: subme.php:651
 #@ subme
 msgid "subscribe"
 msgstr "aanmelden"
 
-#: subme.php:629
+#: subme.php:663
 #, php-format
 #@ subme
 msgid "A new user has requested to subscribe to %s"
 msgstr "Een nieuwe gebruiker heeft een aanmeldingsverzoek gemaakt."
 
-#: subme.php:650
-#: subme.php:728
+#: subme.php:684
+#: subme.php:764
 #@ subme
 msgid "A confirmation message is on its way!"
 msgstr "Een bevestigingsbericht is verstuurd!"
 
-#: subme.php:668
+#: subme.php:704
 #@ subme
 msgid "Sorry, but this email address has not subscribed."
 msgstr "Sorry, maar dit e-mailadres is niet ingeschreven."
 
-#: subme.php:695
+#: subme.php:731
 #@ subme
 msgid "unsubscribe"
 msgstr "afmelden"
 
-#: subme.php:707
+#: subme.php:743
 #, php-format
 #@ subme
 msgid "A user has requested to unsubscribe from %s"
 msgstr "Een abonnee heeft verzocht zich af te melden van %s"
 
-#: subme.php:879
+#: subme.php:915
 #@ subme
 msgid "Please select the action you want to take."
 msgstr "Selecteer welke actie je wilt uitvoeren."
 
-#: subme.php:882
-#: subme.php:913
+#: subme.php:918
+#: subme.php:949
 #@ subme
 msgid "Please select at least one email address."
 msgstr "Selecteer minstens één e-mailadres."
 
 #: subme.php:246
-#: subme.php:1199
+#: subme.php:1235
 #@ subme
 msgid "Your email address:"
 msgstr "Jouw e-mailadres:"
 
-#: subme.php:1164
+#: subme.php:1200
 #@ subme
 msgid "You have successfully unsubscribed."
 msgstr "Je hebt je succesvol afgemeld."
@@ -471,13 +471,13 @@ msgstr "Deactiveer"
 msgid "SubMe cannot be activated as a network plugin. Please activate it at on a site level."
 msgstr "SubMe kan niet geactiveerd worden als een netwerk plugin. Activeer de plugin op site-niveau."
 
-#: subme.php:630
+#: subme.php:664
 #, php-format
 #@ subme
 msgid "%s has requested to subscribe to %s"
 msgstr "%s heeft zich aangemeld voor %s."
 
-#: subme.php:708
+#: subme.php:744
 #, php-format
 #@ subme
 msgid "%s has requested to unsubscribe from %s"
@@ -502,4 +502,27 @@ msgstr "Er is nog geen standaard SubMe pagina geconfigureerd."
 #@ subme
 msgid "The default SubMe page that is configured does not exists anymore."
 msgstr "De standaard SubMe pagina die is geconfigureerd bestaat niet meer."
+
+#: include/queue.php:105
+#: include/subscribers.php:115
+#@ subme
+msgid "items"
+msgstr "items"
+
+#: include/queue.php:105
+#: include/subscribers.php:115
+#@ subme
+msgid "item"
+msgstr "item"
+
+#: subme.php:619
+#@ subme
+msgid "You are moving too fast. Please be patient."
+msgstr "Je gaat te snel. Heb heel even geduld."
+
+#: include/queue.php:325
+#: include/subscribers.php:265
+#@ subme
+msgid "No items found."
+msgstr "Geen items gevonden."
 
