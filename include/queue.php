@@ -102,7 +102,7 @@ if ( strlen( $sm_error ) > 0 ) {
 			</div>
 
 			<div class="tablenav-pages">
-				<span><? echo esc_html( $total ) . ' ' . ( $total > 2 ? 'items' : 'item' ) . ' '; ?></span>
+				<span><? echo esc_html( $total ) . ' ' . ( $total > 2 ? __( 'items', 'subme' ) : __( 'item', 'subme' ) ) . ' '; ?></span>
 				<span class="pagination-links">
 					<?php
 						/* First page */
@@ -297,28 +297,32 @@ if ( strlen( $sm_error ) > 0 ) {
 						$per_page );
 					$results = $wpdb->get_results( $query );
 					
-					$counter = 0;
-					foreach ( $results as $result ) {
-						echo '<tr' . ( $counter % 2 ? ' class="alternate">' : '>' );
-							echo '<td><input name="cb[' . absint( $result->id ) . ']" type="checkbox" value="' . absint( $result->id ) . '"/></td>';						
-							echo '<td>';
-							echo absint( $result->id );
-							echo '</td>';
-						
-							echo '<td>';
-							echo esc_html( $result->sender );
-							echo '</td>';
+					if ( $wpdb->num_rows > 0 ) {
+						$counter = 0;
+						foreach ( $results as $result ) {
+							echo '<tr' . ( $counter % 2 ? ' class="alternate">' : '>' );
+								echo '<td><input name="cb[' . absint( $result->id ) . ']" type="checkbox" value="' . absint( $result->id ) . '"/></td>';						
+								echo '<td>';
+								echo absint( $result->id );
+								echo '</td>';
+							
+								echo '<td>';
+								echo esc_html( $result->sender );
+								echo '</td>';
 
-							echo '<td>';
-							echo esc_html( $result->recipient );
-							echo '</td>';
+								echo '<td>';
+								echo esc_html( $result->recipient );
+								echo '</td>';
 
-							echo '<td>';
-							echo esc_html( $result->subject );
-							echo '</td>';
-						echo '<tr/>';
+								echo '<td>';
+								echo esc_html( $result->subject );
+								echo '</td>';
+							echo '<tr/>';
 
-						$counter++;
+							$counter++;
+						}
+					} else {
+						echo '<tr><td colspan="5">' . __( 'No items found.', 'subme' ) . '</td></tr>';
 					}	
 				?>
 			</table>

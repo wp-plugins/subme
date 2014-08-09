@@ -11,7 +11,7 @@
  * Text Domain: SubMe
 */
 
-/* Copyright 2014 Dennis Pellikaan (info@supongo.org)
+/* Copyright 2014 Dennis Pellikaan
  *
  * Partially based on the Subscribe2 plugin by 
  * Copyright (C) 2006-14 Matthew Robinson
@@ -51,7 +51,7 @@ if ( ! function_exists ('is_plugin_active_for_network' ) ) {
 /* Do not allow for network plugin activation, but only per site */
 if ( is_plugin_active_for_network( plugin_basename( __FILE__ ) ) ) {
 	deactivate_plugins( plugin_basename( __FILE__ ) );
-	exit( __( "SubMe cannot be activated as a network plugin. Please activate it at on a site level.", 'subme' ) );
+	exit( __( 'SubMe cannot be activated as a network plugin. Please activate it at on a site level.', 'subme' ) );
 }
 
 /* Include the appropiate functions to get user information */
@@ -228,7 +228,7 @@ class subme {
 					return;
 				}
 
-				if ( ! $this->is_valid_email( $_POST['email'] ) ) {
+				if ( ! $this->is_valid_email( strtolower( $_POST['email'] ) ) ) {
 					$msg = __( 'Sorry, but this does not seem like a valid email address.', 'subme' );
 				} else {
 					if ( isset( $_POST['subscribe'] ) ) {
@@ -292,7 +292,7 @@ class subme {
 		global $wpdb;
 		global $my_subme;
 
-		/* Load the maybe_create_table function is not previously loaded */
+		/* Load the maybe_create_table function if not previously loaded */
 		if ( ! function_exists( 'maybe_create_table' ) ) {
 			require_once( ABSPATH . 'wp-admin/install-helper.php' );
 		}
@@ -399,12 +399,32 @@ class subme {
 
 	/* Return the client's IP address */
 	function get_ip() {
-		return '';
+		if ( function_exists( 'apache_request_headers' ) ) {
+			$headers = apache_request_headers();
+		} else {
+			$headers = $_SERVER;
+		}
+ 
+		if ( array_key_exists( 'X-Forwarded-For', $headers ) && ( filter_var( $headers['X-Forwarded-For'], FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 ) || filter_var( $headers['X-Forwarded-For'], FILTER_VALIDATE_IP, FILTER_FLAG_IPV6 ) ) ) {
+			$ip = $headers['X-Forwarded-For'];
+		} elseif ( array_key_exists( 'HTTP_X_FORWARDED_FOR', $headers ) && ( filter_var( $headers['HTTP_X_FORWARDED_FOR'], FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 ) || filter_var( $headers['HTTP_X_FORWARDED_FOR'], FILTER_VALIDATE_IP, FILTER_FLAG_IPV6 ) ) ) {
+			$ip = $headers['HTTP_X_FORWARDED_FOR'];
+		} else {
+			if ( filter_var( $_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 ) ) {
+				$ip = filter_var( $_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 );
+			} elseif ( filter_var( $_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP, FILTER_FLAG_IPV6 ) ) {
+				$ip = filter_var( $_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP, FILTER_FLAG_IPV6 );
+			} else {
+				$ip = '';
+			}
+		}
+
+		return $ip;		
 	}
 	
 	/* Send out an email */
 	function mail( $recipient, $sender, $name, $subject, $message ) {
-		if ( '' === $recipient  || '' === $subject || '' === $message ) return;
+		if ( '' == $recipient  || '' == $subject || '' == $message ) return;
 
 		$subject = wp_strip_all_tags( stripslashes( $subject ) );
 		$message = wp_strip_all_tags( stripslashes( $message ) );
@@ -412,7 +432,7 @@ class subme {
 		$headers[] = "Content-type:text/plain; charset=UTF-8";
 
 		/* Set different From address other than default */
-		if ( '' !== $sender || '' !== $name ) {
+		if ( '' != $sender || '' != $name ) {
 			$headers[] = "From: " . esc_html( $name ) . " <" . esc_attr( $sender ) . ">";
 		}
 		
@@ -449,7 +469,7 @@ class subme {
 	}
 
 	/* Substitute keywords in templates */
-	function substitute( $text, $post ) {
+	function substitute( $text, $post = false ) {
 		/* Replace variables */
 		$text = preg_replace( '/@@BLOGLINK/', get_option( 'home' ), $text );
 		$text = preg_replace( '/@@BLOGNAME/', get_option( 'blogname' ), $text );
@@ -502,6 +522,8 @@ class subme {
 		global $wpdb;
 		global $sm_error;
 
+		$email = strtolower( $email );
+
 		/* Check if the email is valid */
 		if ( ! $this->is_valid_email( $email ) ) {
 			$sm_error = __( 'Sorry, but this does not seem like a valid email address.', 'subme' );
@@ -522,9 +544,10 @@ class subme {
 
 		/* Insert the new subscriber */
 		$query = $wpdb->prepare( "INSERT INTO $table (email, active, timestamp, ip, conf_hash, conf_timestamp, conf_ip) VALUES (
-			%s, '1', %d, '', NULL, %d, '')",
+			%s, '1', %d, %s, NULL, %d, '')",
 				$email,
 				time(),
+				$this->get_ip(),
 				time()
 			);
 		$wpdb->query( $query );
@@ -574,12 +597,28 @@ class subme {
 	function subscribe( $email ) {
 		global $wpdb;
 
+		$email = strtolower( $email );
+
 		/* Check if the email is valid */
 		if ( ! $this->is_valid_email( $email ) ) {
 			return __( 'Sorry, but this does not seem like a valid email address.', 'subme' );
 		}
 
 		$table = $wpdb->prefix . 'subme';
+
+		/* Prevent flooding. This only works if we are able to retrieve the client's IP. */
+		$ip = $this->get_ip();
+		if ( $ip ) {
+			$query = $wpdb->prepare( "SELECT COUNT(*) FROM $table WHERE ip=%s AND timestamp > %d",
+				$ip,
+				time() - 300 );
+			$count = $wpdb->get_var( $query );	
+
+			/* Allow no more than 5 subscriptions in 5 minutes (300 seconds) */
+			if ( $count >= 5 ) {
+				return __( 'You are moving too fast. Please be patient.', 'subme' );
+			}
+		}
 
 		/* Check if the email already exists */
 		$query = $wpdb->prepare( "SELECT email FROM $table WHERE email=%s LIMIT 1", $email );
@@ -588,24 +627,19 @@ class subme {
 			return __( 'Sorry, but this email address has already subscribed.', 'subme' );
 		}
 
-		/* Generate a new confirmation hash */
+		/* Generate a new confirmation hash and get the AUTO_INCREMENT ID */
 		$conf_hash = '1' . hash( 'sha256', base64_encode( openssl_random_pseudo_bytes( 32 ) . $email . time() ) );	
 		$query = $wpdb->prepare( "INSERT INTO $table (email, active, timestamp, ip, conf_hash, conf_timestamp, conf_ip) VALUES (
-			%s, '0', %d, '', %s, NULL, NULL)",
+			%s, '0', %d, %s, %s, NULL, NULL)",
 				$email,
 				time(),
+				$this->get_ip(),
 				$conf_hash
 			);
-		$wpdb->query( $query );
-
-		/* Get the new ID */
-		$query = $wpdb->prepare( "SELECT id FROM $table WHERE email=%s LIMIT 1", $email );
-		$result = $wpdb->get_results( $query );
-		if ( $result ) {
-			$new_id = $result[0]->id;
-		} else {
+		if ( ! $wpdb->query( $query ) ) {
 			return __( 'Sorry, but something went wrong.', 'subme' );
 		}
+		$new_id = $wpdb->insert_id;
 
 		/* Construct email for subscriber */
 		$subj = $this->substitute( $this->sm_options['subscribe_subject'] );
@@ -617,7 +651,7 @@ class subme {
 		$msg = preg_replace( '/@@ACTION/', __( 'subscribe', 'subme' ), $msg );
 
 		/* Prepare the email for sending */
-		if ( '' === $this->sm_options['send_confirmation_emails_from'] ) {
+		if ( '' == $this->sm_options['send_confirmation_emails_from'] ) {
 			$this->prepare_mail( $email, '', '', $subj, $msg, $this->sm_options['confirmation_via_queue'] );
 		} else {
 			$from = get_userdata( $this->sm_options['send_confirmation_emails_from'] );
@@ -631,7 +665,7 @@ class subme {
 
 			/* Prepare the email for sending */
 			$to = get_userdata( $this->sm_options['email_notifications_to'] );
-			if ( '' === $this->sm_options['email_notifications_from'] ) {
+			if ( '' == $this->sm_options['email_notifications_from'] ) {
 				$this->prepare_mail( $to->user_email, '', '', $subj, $msg );
 			} else {
 				$from = get_userdata( $this->sm_options['email_notifications_from'] );
@@ -653,6 +687,8 @@ class subme {
 	/* Unsubscribe email */
 	function unsubscribe( $email ) {
 		global $wpdb;
+
+		$email = strtolower( $email );
 
 		/* Check if the email is valid */
 		if ( ! $this->is_valid_email( $email ) ) {
@@ -676,11 +712,11 @@ class subme {
 			);
 		$wpdb->query( $query );
 
-		/* Get the new ID */
+		/* Get the old ID */
 		$query = $wpdb->prepare( "SELECT id FROM $table WHERE email=%s LIMIT 1", $email );
 		$result = $wpdb->get_results( $query );
 		if ( $result ) {
-			$new_id = $result[0]->id;
+			$old_id = $result[0]->id;
 		} else {
 			return __( 'Sorry, but something went wrong.', 'subme' );
 		}
@@ -689,13 +725,13 @@ class subme {
 		$subj = $this->substitute( $this->sm_options['subscribe_subject'] );
 		$msg = $this->substitute( $this->sm_options['subscribe_text'] );
 
-		$url = add_query_arg( 'subme', $conf_hash . $new_id, get_option( 'home' ) );
+		$url = add_query_arg( 'subme', $conf_hash . $old_id, get_option( 'home' ) );
 		$msg = preg_replace( '/@@LINK/', $url, $msg );
 
 		$msg = preg_replace( '/@@ACTION/', __( 'unsubscribe', 'subme' ), $msg );
 
 		/* Prepare the email for sending */
-		if ( '' === $this->sm_options['send_confirmation_emails_from'] ) {
+		if ( '' == $this->sm_options['send_confirmation_emails_from'] ) {
 			$this->prepare_mail( $email, '', '', $subj, $msg, $this->sm_options['confirmation_via_queue'] );
 		} else {
 			$from = get_userdata( $this->sm_options['send_confirmation_emails_from'] );
@@ -709,7 +745,7 @@ class subme {
 
 			/* Prepare the email for sending */
 			$to = get_userdata( $this->sm_options['email_notifications_to'] );
-			if ( '' === $this->sm_options['email_notifications_from'] ) {
+			if ( '' == $this->sm_options['email_notifications_from'] ) {
 				$this->prepare_mail( $to->user_email, '', '', $subj, $msg );
 			} else {
 				$from = get_userdata( $this->sm_options['email_notifications_from'] );
@@ -1181,7 +1217,7 @@ class subme_widget extends WP_Widget {
 						return;
 					}
 
-					if ( ! $my_subme->is_valid_email( $_POST['email'] ) ) {
+					if ( ! $my_subme->is_valid_email( strtolower( $_POST['email'] ) ) ) {
 						$msg = __( 'Sorry, but this does not seem like a valid email address.', 'subme' );
 					} else {
 						if ( isset( $_POST['subscribe'] ) ) {

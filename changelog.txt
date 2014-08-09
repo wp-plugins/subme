@@ -1,0 +1,7 @@
+= 1.1 =
+* Added logging of subscriber's IP address.
+* Added flood pretection for adding new subscribers.
+* Added message 'No items found' for empty tables in include/subscribers.php and include/queue.php.
+* Improved retrieval of AUTO_INCREMENT value when a new subscriber is added to the database.
+* Code cleanup
+

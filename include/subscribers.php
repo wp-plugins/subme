@@ -112,7 +112,7 @@ if ( strlen( $sm_error ) > 0 ) {
 
 			<?php /* Pagination */ ?>
 			<div class="tablenav-pages">
-				<span><? echo $total . ' ' . ( $total > 2 ? 'items' : 'item' ) . ' '; ?></span>
+				<span><? echo $total . ' ' . ( $total > 2 ? __( 'items', 'subme' ) : __( 'item', 'subme' ) ) . ' '; ?></span>
 				<span class="pagination-links">
 					<?php
 						/* First page */
@@ -238,27 +238,31 @@ if ( strlen( $sm_error ) > 0 ) {
 				<tbody>
 				<?php
 					$table = $wpdb->prefix . 'subme';
-					$query = $wpdb->prepare( "SELECT id, active, email, timestamp, conf_timestamp FROM $table ORDER BY active, " . ( 'email' === $orderby ? 'email' : 'timestamp' ) . ' ' . ( 'asc' === $order ? 'ASC' : 'DESC' ) . ' ' . "LIMIT %d, %d",
+					$query = $wpdb->prepare( "SELECT id, active, email, timestamp FROM $table ORDER BY active, " . ( 'email' === $orderby ? 'email' : 'timestamp' ) . ' ' . ( 'asc' === $order ? 'ASC' : 'DESC' ) . ' ' . "LIMIT %d, %d",
 						( ( $page - 1 ) * $per_page ),
 						$per_page );
 					$results = $wpdb->get_results( $query );
 					
-					$counter = 0;
-					foreach ( $results as $result ) {
-						echo '<tr' . ( $counter % 2 ? ' class="alternate">' : '>' );
-							echo '<td><input name="cb[' . absint( $result->id ) . ']" type="checkbox" value="' . absint( $result->id ) . '"></td>';	
-							echo '<td class="email column-email">';
-							echo ( $result->active ? '<span style="color:#000000">' : '<span style="color:#FF0000">' );
-							echo esc_html( $result->email );
-							echo '</span>';
-							echo '</td>';
-
-							echo '<td class="date column-date">';
-							echo date( "Y-m-d", $result->timestamp );
-							echo '</td>';
-						echo '<tr/>';
-
-						$counter++;
+					if ( $wpdb->num_rows > 0 ) {
+						$counter = 0;
+						foreach ( $results as $result ) {
+							echo '<tr' . ( $counter % 2 ? ' class="alternate">' : '>' );
+								echo '<td><input name="cb[' . absint( $result->id ) . ']" type="checkbox" value="' . absint( $result->id ) . '"></td>';	
+								echo '<td class="email column-email">';
+								echo ( $result->active ? '<span style="color:#000000">' : '<span style="color:#FF0000">' );
+								echo esc_html( $result->email );
+								echo '</span>';
+								echo '</td>';
+	
+								echo '<td class="date column-date">';
+								echo date( "Y-m-d", $result->timestamp );
+								echo '</td>';
+							echo '<tr/>';
+	
+							$counter++;
+						}
+					} else {
+						echo '<tr><td colspan="3">' . __( 'No items found.', 'subme' ) . '</td></tr>';
 					}	
 				?>
 				</tbody>
