@@ -1,8 +1,8 @@
 === SubMe ===
-Tags: subscription, subscribe, notify, notification, email
+Tags: post, subscription, subscribe, notify, notification, email
 Requires at least: 3.9
 Tested up to: 3.9.2
-Stable tag: 1.1
+Stable tag: 1.1.1
 License: GPL3
 
 SubMe notifies subscribers by email when an new post has been published.

@@ -1,3 +1,7 @@
+= 1.1.1 =
+* Fixed version info
+* Added search tag
+
 = 1.1 =
 * Added logging of subscriber's IP address.
 * Added flood pretection for adding new subscribers.
