@@ -4,7 +4,7 @@
  * Plugin Name: SubMe
  * Plugin URI:
  * Description: SubMe notifies subscribers by email when an new post has been published.
- * Version: 1.1.1
+ * Version: 1.2
  * Author: Dennis Pellikaan
  * Author URI: https://supongo.org
  * Licence: GPL3
@@ -468,6 +468,19 @@ class subme {
 		return true;
 	}
 
+	/* Strips plain text without cutting words */
+	function trim_words( $text, $length = 700 ) {
+		$len = strlen( $text );
+		
+		/* Text is not longer than length */
+		if ( $len <= $length ) {
+			return $text;
+		}
+
+		$last_space = strrpos( substr( $text, 0, $length ), ' ' );
+		return substr( $text, 0, $last_space ) . ' [..]';
+	}
+
 	/* Substitute keywords in templates */
 	function substitute( $text, $post = false ) {
 		/* Replace variables */
@@ -476,9 +489,15 @@ class subme {
 
 		/* Replace post specific variables */
 		if ( $post ) {
+			/* Include the Html2Text class */
+			require_once( SMPATH . '/include/Html2Text.php' );
+
 			$author = get_userdata( $post->post_author );
 			$title = wp_strip_all_tags( stripslashes( $post->post_title ) );
-			$content = wp_trim_words( wp_strip_all_tags( html_entity_decode( $post->post_content ) ), 50, ' [..]' );
+
+			/* Get plain text excerpt of the post */
+			$html2text = new Html2Text\Html2Text( trim( $post->post_content ) );
+			$content = trim( $this->trim_words( $html2text->get_text() ) );
 
 			$text = preg_replace( '/@@AUTHORNAME/', ( '' != $author->display_name ? $author->display_name : $author->user_login ), $text );
 			$text = preg_replace( '/@@SNIPPET/', $content, $text );
@@ -868,7 +887,7 @@ class subme {
 		if ( '' == $this->sm_options['send_post_emails_from'] ) {
 			$sender = '';
 		} elseif ( 'Post Author' === $this->sm_options['send_post_emails_from'] ) {
-			$sender = get_userdata ( $post->post_author );
+			$sender = get_userdata( $post->post_author );
 		} else {
 			$sender = get_userdata( $this->sm_options['send_post_emails_from'] );
 		}

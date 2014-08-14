@@ -1,3 +1,7 @@
+= 1.2 =
+* Added Michael Tibben's Html2Text class to convert HTML to plain text. SubMe's version of Html2Text doesn't convert newlines to spaces.
+* Added trim_words function to create an excerpt of a post, instead of using wp_trim_words.
+
 = 1.1.1 =
 * Fixed version info
 * Added search tag
