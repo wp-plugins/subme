@@ -86,7 +86,7 @@ if ( isset( $_POST['form'] ) ) {
 
 				<?php
 					$ret = $this->check_options();
-					echo __( 'Plugin configured correctly:', 'subme' ) . '<strong>' . ( 'OK' === $ret['status'] ? __( ' OK', 'subme' ) : __( ' NO, please check your settings.' ) ) . '</strong>';
+					echo __( 'Plugin configured correctly:', 'subme' ) . ' ' . '<strong>' . ( 'OK' === $ret['status'] ? __( 'OK', 'subme' ) : __( 'NO, please check your settings.' ) ) . '</strong>';
 
 					if ( 'OK' !== $ret['status'] ) {
 						echo '<br />';
@@ -254,11 +254,11 @@ if ( isset( $_POST['form'] ) ) {
 					<?php
 					echo '<option value="" ';
 					$this->selected( 'Default' === $this->sm_options['send_post_emails_from'] ? true : false );
-					echo '>Default</option>';
+					echo '>' . __( 'Default', 'subme' ) . '</option>';
 
 					echo '<option value="Post Author" ';
 					$this->selected( 'Post Author' === $this->sm_options['send_post_emails_from'] ? true : false );
-					echo '>Post Author</option>';
+					echo '>' . __( 'Post Author', 'subme' ) . '</option>';
 
 					$args = array( 'fields' => array( 'ID', 'display_name' ) );
 					$users = get_users( $args );
@@ -273,24 +273,24 @@ if ( isset( $_POST['form'] ) ) {
 
 				<br />
 				<?php echo __( 'Send emails for protected posts:', 'subme' ); ?>
-				<label><input type="radio" name="protected_posts" value="yes" <?php $this->checked( 'yes' === $this->sm_options['email_protected_posts'] ? true : false );?>/>yes</label>
-				<label><input type="radio" name="protected_posts" value="no" <?php $this->checked( 'no' === $this->sm_options['email_protected_posts'] ? true : false );?>/>no</label>
+				<label><input type="radio" name="protected_posts" value="yes" <?php $this->checked( 'yes' === $this->sm_options['email_protected_posts'] ? true : false );?>/><?php echo __( 'yes', 'subme' ); ?></label>
+				<label><input type="radio" name="protected_posts" value="no" <?php $this->checked( 'no' === $this->sm_options['email_protected_posts'] ? true : false );?>/><?php echo __( 'no', 'subme' ); ?></label>
 			
 				<br />
 				<?php echo __( 'Send emails for private posts:', 'subme' ); ?>
-				<label><input type="radio" name="private_posts" value="yes" <?php $this->checked( 'yes' === $this->sm_options['email_private_posts'] ? true : false );?>/>yes</label>
-				<label><input type="radio" name="private_posts" value="no" <?php $this->checked( 'no' === $this->sm_options['email_private_posts'] ? true : false );?>/>no</label>
+				<label><input type="radio" name="private_posts" value="yes" <?php $this->checked( 'yes' === $this->sm_options['email_private_posts'] ? true : false );?>/><?php echo __( 'yes', 'subme' ); ?></label>
+				<label><input type="radio" name="private_posts" value="no" <?php $this->checked( 'no' === $this->sm_options['email_private_posts'] ? true : false );?>/><?php echo __( 'no', 'subme' ); ?></label>
 
 				<br />
 				<br />
 				<?php echo __( 'Cron jobs enabled:', 'subme' ); ?>
-				<label><input type="radio" name="cron_enabled" value="yes" onclick="subme_cron_enabled (1);" <?php $this->checked( 'yes' === $this->sm_options['cron_enabled'] ? true : false );?>/>yes</label>
-				<label><input type="radio" name="cron_enabled" value="no" onclick="subme_cron_enabled (0);" <?php $this->checked( 'no' === $this->sm_options['cron_enabled'] ? true : false );?>/>no</label>
+				<label><input type="radio" name="cron_enabled" value="yes" onclick="subme_cron_enabled (1);" <?php $this->checked( 'yes' === $this->sm_options['cron_enabled'] ? true : false );?>/><?php echo __( 'yes', 'subme' ); ?></label>
+				<label><input type="radio" name="cron_enabled" value="no" onclick="subme_cron_enabled (0);" <?php $this->checked( 'no' === $this->sm_options['cron_enabled'] ? true : false );?>/><?php echo __( 'no', 'subme' ); ?></label>
 
 				<br />
 				<?php echo __( 'Send confirmation emails via the queue:', 'subme' ); ?>
-				<label><input type="radio" id="subme_confirmation_via_queue" name="confirmation_via_queue" value="yes" <?php $this->checked( 'yes' === $this->sm_options['confirmation_via_queue'] ? true : false );?>/>yes</label>
-				<label><input type="radio" name="confirmation_via_queue" value="no" <?php $this->checked( 'no' === $this->sm_options['confirmation_via_queue'] ? true : false );?>/>no</label>
+				<label><input type="radio" id="subme_confirmation_via_queue_yes" name="confirmation_via_queue" value="yes" <?php $this->checked( 'yes' === $this->sm_options['confirmation_via_queue'] ? true : false );?> /><?php echo __( 'yes', 'subme' ); ?></label>
+				<label><input type="radio" id="subme_confirmation_via_queue_no" name="confirmation_via_queue" value="no" <?php $this->checked( 'no' === $this->sm_options['confirmation_via_queue'] ? true : false );?> /><?php echo __( 'no', 'subme' ); ?></label>
 
 				<br />
 				<?php echo __( 'How often does the cron job run (minutes)?', 'subme' ); ?>
@@ -303,6 +303,13 @@ if ( isset( $_POST['form'] ) ) {
 				<label>
 				<input type="text"<?php if ( 'no' === $this->sm_options['cron_enabled'] ) echo " disabled "; ?>id="subme_emails_per_burst" name="emails_per_burst" value="<?php echo absint( $this->sm_options['emails_per_burst'] );?>" />
 				</label>
+
+				<br />
+				<br />
+				<?php echo __( 'Set Return-Path header to:', 'subme' ) . ' '; ?>
+				<label><input type="radio" name="return_path" value="Admin" <?php $this->checked( 'Admin' === $this->sm_options['return_path'] ? true : false ); ?> /><?php echo __( 'Admin email', 'subme' ); ?></label>
+				<label><input type="radio" name="return_path" value="From address" <?php $this->checked( 'From address' === $this->sm_options['return_path'] ? true : false ); ?> /><?php echo __( 'From address', 'subme' ); ?></label>
+				<label><input type="radio" name="return_path" value="Default" <?php $this->checked( '' == $this->sm_options['return_path'] ? true : false ); ?> /><?php echo __( 'Default', 'subme' ); ?></label>
 <?php
 			break;
 			case 'template':
@@ -404,7 +411,7 @@ if ( isset( $_POST['form'] ) ) {
 
 		</p>
 		<p class="submit">
-			<input type="submit" class="button-primary" name="submit" value="Submit" />
+			<input type="submit" class="button-primary" name="submit" value="<?php echo __( 'Submit', 'subme' ); ?>" />
 		</p>
 	</form>
 </div>

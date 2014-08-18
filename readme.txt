@@ -2,7 +2,7 @@
 Tags: cron, email, e-mail, plain text, post, subscription, subscribe, notify, notification
 Requires at least: 3.9
 Tested up to: 3.9.2
-Stable tag: 1.2
+Stable tag: 1.2.1
 License: GPL3
 
 SubMe notifies subscribers by email when an new post has been published.

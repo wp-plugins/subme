@@ -4,7 +4,7 @@
  * Plugin Name: SubMe
  * Plugin URI:
  * Description: SubMe notifies subscribers by email when an new post has been published.
- * Version: 1.2
+ * Version: 1.2.1
  * Author: Dennis Pellikaan
  * Author URI: https://supongo.org
  * Licence: GPL3
@@ -88,6 +88,11 @@ class subme {
 			return;
 		}
 
+		/* Only add action when the return_path header is not set to Default. */
+		if ( '' != $this->sm_options['return_path'] ) {
+			add_action( 'phpmailer_init', array( &$this, 'fix_return_path' ) );
+		}
+
 		/* Make sure cron function is called when enabled */
 		if( $this->sm_options['cron_enabled'] ) {
 			add_action( 'call_subme_cron', array( &$this, 'subme_cron' ) );
@@ -98,6 +103,7 @@ class subme {
 			 add_action( 'wp_meta', array( &$this, 'add_meta' ), 0 );
 		}
 
+		/* Enable SubMe Widget */
 		if ( $this->sm_options['enable_widget'] ) {
 			add_action( 'widgets_init', array( &$this, 'add_widget' ) );
 		}
@@ -422,6 +428,15 @@ class subme {
 		return $ip;		
 	}
 	
+	/* Set the return path equal to that of the From address */
+	function fix_return_path( $phpmailer ) {
+		if ( 'Admin' === $this->sm_options['return_path'] ) {
+			$phpmailer->Sender = get_option( 'admin_email' );
+		} elseif ( 'From address' === $this->sm_options['return_path'] ) {
+			$phpmailer->Sender = $phpmailer->From;
+		}
+	}
+
 	/* Send out an email */
 	function mail( $recipient, $sender, $name, $subject, $message ) {
 		if ( '' == $recipient  || '' == $subject || '' == $message ) return;
@@ -1098,6 +1113,16 @@ class subme {
 							/* Make sure at least one email per burst is sent out. Otherwise the queue would fill up */
 							if ( 0 == $this->sm_options['emails_per_burst'] ) {
 								$this->sm_options['emails_per_burst'] = 1;
+							}
+						}
+
+						if ( isset( $_POST['return_path'] ) ) {
+							if ( 'Admin' === $_POST['return_path'] ) {
+								$this->sm_options['return_path'] = 'Admin';
+							} elseif ( 'From address' === $_POST['return_path'] ) {
+								$this->sm_options['return_path'] = 'From address';
+							} else {
+								$this->sm_options['return_path'] = '';
 							}
 						}
 

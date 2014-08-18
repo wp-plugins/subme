@@ -102,7 +102,7 @@ if ( strlen( $sm_error ) > 0 ) {
 			</div>
 
 			<div class="tablenav-pages">
-				<span><? echo esc_html( $total ) . ' ' . ( $total > 2 ? __( 'items', 'subme' ) : __( 'item', 'subme' ) ) . ' '; ?></span>
+				<span><i><? echo esc_html( $total ) . ' ' . ( $total > 1 || 0 == $total ? __( 'items', 'subme' ) : __( 'item', 'subme' ) ) . ' '; ?></i></span>
 				<span class="pagination-links">
 					<?php
 						/* First page */
