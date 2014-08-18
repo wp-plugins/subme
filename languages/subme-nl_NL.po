@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: SubMe v1.0\n"
+"Project-Id-Version: SubMe v1.2.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2014-08-09 13:05:26+0000\n"
+"PO-Revision-Date: 2014-08-18 14:29:58+0000\n"
 "Last-Translator: admin <wordpress@supongo.org>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -20,124 +20,124 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Textdomain-Support: yes"
 
-#: subme.php:146
+#: subme.php:151
 #@ subme
 msgid "Settings"
 msgstr "Instellingen"
 
 #: include/subscribers.php:52
-#: subme.php:150
+#: subme.php:155
 #@ subme
 msgid "Subscribers"
 msgstr "Abonnees"
 
-#: subme.php:154
+#: subme.php:159
 #@ subme
 msgid "Queue"
 msgstr "Wachtrij"
 
-#: subme.php:179
-#: subme.php:248
-#: subme.php:1237
+#: subme.php:184
+#: subme.php:253
+#: subme.php:1280
 #@ subme
 msgid "Subscribe"
 msgstr "Aanmelden"
 
-#: subme.php:209
-#: subme.php:1198
+#: subme.php:214
+#: subme.php:1241
 #@ subme
 msgid "Thank you for confirming your subscription"
 msgstr "Bedankt voor het bevestigen van je inschrijving"
 
-#: subme.php:211
+#: subme.php:216
 #@ subme
 msgid "You have successfully unsubscribed"
 msgstr "Je bent succesvol ingeschreven"
 
-#: subme.php:213
+#: subme.php:218
 #@ subme
 msgid "Something unexpected has happend."
 msgstr "Sorry, maar er is iets onverwachts gebeurd."
 
-#: subme.php:232
-#: subme.php:529
-#: subme.php:604
-#: subme.php:695
-#: subme.php:1221
+#: subme.php:237
+#: subme.php:562
+#: subme.php:637
+#: subme.php:728
+#: subme.php:1264
 #@ subme
 msgid "Sorry, but this does not seem like a valid email address."
 msgstr "Sorry, maar dit lijkt geen geldig e-mailadres te zijn."
 
-#: subme.php:250
-#: subme.php:1239
+#: subme.php:255
+#: subme.php:1282
 #@ subme
 msgid "Unsubscribe"
 msgstr "Afmelden"
 
-#: subme.php:540
-#: subme.php:627
+#: subme.php:573
+#: subme.php:660
 #@ subme
 msgid "Sorry, but this email address has already subscribed."
 msgstr "Sorry, maar dit e-mailadres is al ingeschreven."
 
-#: subme.php:640
-#: subme.php:721
-#: subme.php:1202
+#: subme.php:673
+#: subme.php:754
+#: subme.php:1245
 #@ subme
 msgid "Sorry, but something went wrong."
 msgstr "Sorry, maar er is iets onverwachts gebeurd."
 
-#: subme.php:651
+#: subme.php:684
 #@ subme
 msgid "subscribe"
 msgstr "aanmelden"
 
-#: subme.php:663
+#: subme.php:696
 #, php-format
 #@ subme
 msgid "A new user has requested to subscribe to %s"
 msgstr "Een nieuwe gebruiker heeft een aanmeldingsverzoek gemaakt."
 
-#: subme.php:684
-#: subme.php:764
+#: subme.php:717
+#: subme.php:797
 #@ subme
 msgid "A confirmation message is on its way!"
 msgstr "Een bevestigingsbericht is verstuurd!"
 
-#: subme.php:704
+#: subme.php:737
 #@ subme
 msgid "Sorry, but this email address has not subscribed."
 msgstr "Sorry, maar dit e-mailadres is niet ingeschreven."
 
-#: subme.php:731
+#: subme.php:764
 #@ subme
 msgid "unsubscribe"
 msgstr "afmelden"
 
-#: subme.php:743
+#: subme.php:776
 #, php-format
 #@ subme
 msgid "A user has requested to unsubscribe from %s"
 msgstr "Een abonnee heeft verzocht zich af te melden van %s"
 
-#: subme.php:915
+#: subme.php:948
 #@ subme
 msgid "Please select the action you want to take."
 msgstr "Selecteer welke actie je wilt uitvoeren."
 
-#: subme.php:918
-#: subme.php:949
+#: subme.php:951
+#: subme.php:982
 #@ subme
 msgid "Please select at least one email address."
 msgstr "Selecteer minstens één e-mailadres."
 
-#: subme.php:246
-#: subme.php:1235
+#: subme.php:251
+#: subme.php:1278
 #@ subme
 msgid "Your email address:"
 msgstr "Jouw e-mailadres:"
 
-#: subme.php:1200
+#: subme.php:1243
 #@ subme
 msgid "You have successfully unsubscribed."
 msgstr "Je hebt je succesvol afgemeld."
@@ -360,91 +360,76 @@ msgstr "Hoe vaak draaien de cron opdrachten (minuten):"
 msgid "Maximum numbers of emails allowed to send per burst:"
 msgstr "Maximaal aantal e-mails per cron opdracht:"
 
-#: include/settings.php:320
+#: include/settings.php:327
 #@ subme
 msgid "Subscribe/unsubscribe email"
 msgstr "Aanmeld/afmeld e-mail"
 
-#: include/settings.php:322
-#: include/settings.php:347
+#: include/settings.php:329
+#: include/settings.php:354
 #@ subme
 msgid "Subject line:"
 msgstr "Onderwerpregel:"
 
-#: include/settings.php:330
+#: include/settings.php:337
 #@ subme
 msgid "KEYWORD SUBSTITUTION"
 msgstr "TREFWOORD SUBSTITUTIE"
 
-#: include/settings.php:332
+#: include/settings.php:339
 #@ subme
 msgid "Action performed. This can be either <i>subscribe</i> or <i>unsubscribe</i>"
 msgstr "De uitgevoerde actie. Dit kan zijn: <i>aanmelden</i> of <i>afmelden</i>"
 
-#: include/settings.php:333
+#: include/settings.php:340
 #@ subme
 msgid "The post author's name"
 msgstr "De schrijver van de publicatie"
 
-#: include/settings.php:336
+#: include/settings.php:343
 #@ subme
 msgid "The (un)subscribe link for confirmation"
 msgstr "De aan-/afmeldlink ter bevestiging"
 
-#: include/settings.php:337
+#: include/settings.php:344
 #@ subme
 msgid "The post's link"
 msgstr "Link naar de publicatie"
 
-#: include/settings.php:338
+#: include/settings.php:345
 #@ subme
 msgid "Snippet of the blog post"
 msgstr "Uittreksel van de publicatie"
 
-#: include/settings.php:339
+#: include/settings.php:346
 #@ subme
 msgid "The post's title"
 msgstr "De titel van de publicatie"
 
-#: include/settings.php:346
+#: include/settings.php:353
 #@ subme
 msgid "Notification email"
 msgstr "Notificatie e-mail"
 
-#: include/settings.php:370
+#: include/settings.php:377
 #@ subme
 msgid "Default SubMe page:"
 msgstr "Standaard SubMe pagina:"
 
-#: include/settings.php:372
+#: include/settings.php:379
 #@ subme
 msgid "Select a page"
 msgstr "Selecteer een pagina"
 
-#: include/settings.php:391
+#: include/settings.php:398
 #@ subme
 msgid "Show link in META"
 msgstr "Toon link in META"
 
-#: include/settings.php:397
+#: include/settings.php:404
 #@ subme
 msgid "Enable SubMe widget"
 msgstr "Activeer de SubMe widget"
-
-#: include/settings.php:89
-#@ subme
-msgid "Plugin configured correctly:"
-msgstr "Plugin correct geconfigureerd:"
-
-#: include/settings.php:89
-#@ subme
-msgid " OK"
-msgstr "OK"
-
-#: include/settings.php:89
-#@ default
-msgid " NO, please check your settings."
-msgstr ""
 
 #: include/settings.php:231
 #@ subme
@@ -471,13 +456,13 @@ msgstr "Deactiveer"
 msgid "SubMe cannot be activated as a network plugin. Please activate it at on a site level."
 msgstr "SubMe kan niet geactiveerd worden als een netwerk plugin. Activeer de plugin op site-niveau."
 
-#: subme.php:664
+#: subme.php:697
 #, php-format
 #@ subme
 msgid "%s has requested to subscribe to %s"
 msgstr "%s heeft zich aangemeld voor %s."
 
-#: subme.php:744
+#: subme.php:777
 #, php-format
 #@ subme
 msgid "%s has requested to unsubscribe from %s"
@@ -488,17 +473,17 @@ msgstr "%s heeft zich afgemeld van %s."
 msgid "Send confirmation emails via the queue:"
 msgstr "Stuur bevestigingse-mails via de e-mail wachtrij:"
 
-#: subme.php:340
+#: subme.php:345
 #@ subme
 msgid "Failed to get the site admin ID."
 msgstr "Het was niet mogelijk de site admin ID te verkrijgen."
 
-#: subme.php:349
+#: subme.php:354
 #@ subme
 msgid "There is no default SubMe page configured."
 msgstr "Er is nog geen standaard SubMe pagina geconfigureerd."
 
-#: subme.php:355
+#: subme.php:360
 #@ subme
 msgid "The default SubMe page that is configured does not exists anymore."
 msgstr "De standaard SubMe pagina die is geconfigureerd bestaat niet meer."
@@ -515,7 +500,7 @@ msgstr "items"
 msgid "item"
 msgstr "item"
 
-#: subme.php:619
+#: subme.php:652
 #@ subme
 msgid "You are moving too fast. Please be patient."
 msgstr "Je gaat te snel. Heb heel even geduld."
@@ -525,4 +510,66 @@ msgstr "Je gaat te snel. Heb heel even geduld."
 #@ subme
 msgid "No items found."
 msgstr "Geen items gevonden."
+
+#: include/settings.php:89
+#@ subme
+msgid "OK"
+msgstr "OK"
+
+#: include/settings.php:89
+#@ default
+msgid "NO, please check your settings."
+msgstr ""
+
+#: include/settings.php:257
+#: include/settings.php:312
+#@ subme
+msgid "Default"
+msgstr "Standaard"
+
+#: include/settings.php:261
+#@ subme
+msgid "Post Author"
+msgstr "Auteur"
+
+#: include/settings.php:276
+#: include/settings.php:281
+#: include/settings.php:287
+#: include/settings.php:292
+#@ subme
+msgid "yes"
+msgstr "ja"
+
+#: include/settings.php:277
+#: include/settings.php:282
+#: include/settings.php:288
+#: include/settings.php:293
+#@ subme
+msgid "no"
+msgstr "nee"
+
+#: include/settings.php:311
+#@ subme
+msgid "From address"
+msgstr "Verzendadres"
+
+#: include/settings.php:89
+#@ subme
+msgid "Plugin configured correctly:"
+msgstr "Plugin correct geconfigureerd:"
+
+#: include/settings.php:309
+#@ subme
+msgid "Set Return-Path header to:"
+msgstr "Stel Return-Path header in naar:"
+
+#: include/settings.php:414
+#@ subme
+msgid "Submit"
+msgstr "Opslaan"
+
+#: include/settings.php:310
+#@ subme
+msgid "Admin email"
+msgstr "Beheerders e-mail"
 

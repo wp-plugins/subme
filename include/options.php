@@ -26,6 +26,7 @@
                 if ( ! isset( $this->sm_options['cron_enabled'] ) ) $this->sm_options['cron_enabled'] = 'no';
                 if ( ! isset( $this->sm_options['cron_minutes'] ) ) $this->sm_options['cron_minutes'] = '0';
                 if ( ! isset( $this->sm_options['emails_per_burst'] ) ) $this->sm_options['emails_per_burst'] = '0';
+		if ( ! isset( $this->sm_options['return_path'] ) ) $this->sm_options['return_path'] = '';
 
 		/* Templates tab */
                 if ( ! isset( $this->sm_options['subscribe_subject'] ) ) $this->sm_options['subscribe_subject'] = '[@@BLOGNAME] Please confirm your request';

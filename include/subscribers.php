@@ -112,7 +112,7 @@ if ( strlen( $sm_error ) > 0 ) {
 
 			<?php /* Pagination */ ?>
 			<div class="tablenav-pages">
-				<span><? echo $total . ' ' . ( $total > 2 ? __( 'items', 'subme' ) : __( 'item', 'subme' ) ) . ' '; ?></span>
+				<span><i><? echo $total . ' ' . ( $total > 1 || 0 == $total ? __( 'items', 'subme' ) : __( 'item', 'subme' ) ) . ' '; ?></i></span>
 				<span class="pagination-links">
 					<?php
 						/* First page */

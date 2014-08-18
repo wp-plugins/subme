@@ -1,10 +1,12 @@
 function subme_cron_enabled ($val) {
 	if ($val == 1) {
-		document.getElementById("subme_confirmation_via_queue").disabled = false;
+		document.getElementById("subme_confirmation_via_queue_yes").disabled = false;
+		document.getElementById("subme_confirmation_via_queue_no").disabled = false;
 		document.getElementById("subme_cron_minutes").disabled = false;
 		document.getElementById("subme_emails_per_burst").disabled = false;
 	} else {
-		document.getElementById("subme_confirmation_via_queue").disabled = true;
+		document.getElementById("subme_confirmation_via_queue_yes").disabled = true;
+		document.getElementById("subme_confirmation_via_queue_no").disabled = true;
 		document.getElementById("subme_cron_minutes").disabled = true;
 		document.getElementById("subme_emails_per_burst").disabled = true;
 	}

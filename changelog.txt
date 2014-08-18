@@ -1,3 +1,8 @@
+= 1.2.1 =
+* Added option to fix the Return-Path for phpmailer
+* Fixed some Dutch translations
+* Fixed printing the noun 'item' in plural or singular in include/queue.php and include/subscribers.php to make it agree with the number of items.
+
 = 1.2 =
 * Added Michael Tibben's Html2Text class to convert HTML to plain text. SubMe's version of Html2Text doesn't convert newlines to spaces.
 * Added trim_words function to create an excerpt of a post, instead of using wp_trim_words.
