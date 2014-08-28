@@ -15,6 +15,7 @@ if ( ! is_super_admin() && $current_user->ID != $this->sm_options['delegate_subs
 
 global $wpdb;
 global $sm_error;
+global $sm_updated;
 
 if ( isset( $_POST['form'] ) ) {
 	/* Check nonce */
@@ -25,31 +26,71 @@ if ( isset( $_POST['form'] ) ) {
 	$this->process_post();
 }
 
+/* Display updated if any */
+if ( strlen( $sm_updated ) > 0 ) {
+	$this->display_admin_updated( $sm_updated );
+	$sm_updated = '';
+}
+
 /* Display error if any */
 if ( strlen( $sm_error ) > 0 ) {
-	$this->display_admin_error( esc_html( $sm_error ) );
+	$this->display_admin_error( $sm_error );
 	$sm_error = '';
 }
 
 ?>
 
 <div class="wrap">
-	<h2><?php echo __( 'Add Subscriber', 'subme' ); ?></h2>
-	<form method="post">
+	<h2>Subscribers</h2>
+
+	<form method="post" enctype="multipart/form-data">
 		<?php wp_nonce_field( 'subme_subscribers', 'subme_subscribers_nonce', true, true ); ?>
 		<input type="hidden" name="form" value="subscribers">
 
-		<div>
-			<?php echo __( 'Enter the email address that you would like to add', 'subme' ); ?><br />
-			<input type="text" name="email" style="border-top: none; width: 30em;">
-			<br />
-			<br />
-			<input type="submit" class="button-primary" name="subscribe" value="<?php echo __( 'Add', 'subme' ); ?>">
-		</div>
+		<table style="border: none">
+			<tr>
+				<td>
+					<h3><?php echo __( 'Add a single subscriber', 'subme' ); ?></h3>
+				</td>
+				<td>
+					<h3><?php echo __( 'Import CSV file', 'subme' ); ?></h3>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<?php echo __( 'The email address that you would like to add:', 'subme' ); ?>
+				</td>
+				<td>
+					<label><input name="file" type="file" value="" /></label>
+				</td>
+			</tr>
+			<tr>
+				<td style="padding-right: 5em;">
+					<label><input type="text" name="email" style="width: 20em;"></label>
+				</td>
+				<td>
+					<i><?php echo __( 'First line is considered to contain the headers. Each record should be on a separate line.', 'subme' ); ?></i><br />
+				</tr>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<br class="clear" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label><input type="submit" class="button-primary" name="subscribe" value="<?php echo __( 'Add', 'subme' ); ?>"></label>
+				</td>
+				<td>
+					<label><input type="submit" class="button-primary" name="import" value="<?php echo __( 'Upload and import CSV file', 'subme' ); ?>" /></label>
+				</td>
+			</tr>
+		</table>
 		<hr />
 
+		<?php /* Manage subscribers */ ?>
 		<div>
-			<h2><?php echo __( 'Subscribers', 'subme' ); ?></h2>
+			<h3><?php echo __( 'Subscribers', 'subme' ); ?></h3>
 		
 			<div class="tablenav top">
 
@@ -262,11 +303,17 @@ if ( strlen( $sm_error ) > 0 ) {
 							$counter++;
 						}
 					} else {
-						echo '<tr><td colspan="3">' . __( 'No items found.', 'subme' ) . '</td></tr>';
+						echo '<tr><td colspan="3"><i>' . __( 'No items found.', 'subme' ) . '</i></td></tr>';
 					}	
 				?>
 				</tbody>
 			</table>
+
+			<?php /* Export to CSV button */ ?>
+			<div>
+			<br />
+			<input type="submit" class="button-primary" name="export" value="<?php echo __( 'Export as CSV', 'subme' ); ?>">	
+			</div>
 		</div>
 	</form>
 </div>

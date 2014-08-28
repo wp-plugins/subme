@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: SubMe v1.2.1\n"
+"Project-Id-Version: SubMe v1.2.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2014-08-18 14:29:58+0000\n"
+"PO-Revision-Date: 2014-08-28 09:17:48+0000\n"
 "Last-Translator: admin <wordpress@supongo.org>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -20,124 +20,125 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Textdomain-Support: yes"
 
-#: subme.php:151
+#: subme.php:161
 #@ subme
 msgid "Settings"
 msgstr "Instellingen"
 
-#: include/subscribers.php:52
-#: subme.php:155
+#: include/subscribers.php:93
+#: subme.php:165
 #@ subme
 msgid "Subscribers"
 msgstr "Abonnees"
 
-#: subme.php:159
+#: subme.php:169
 #@ subme
 msgid "Queue"
 msgstr "Wachtrij"
 
-#: subme.php:184
-#: subme.php:253
-#: subme.php:1280
+#: subme.php:207
+#: subme.php:276
+#: subme.php:1402
 #@ subme
 msgid "Subscribe"
 msgstr "Aanmelden"
 
-#: subme.php:214
-#: subme.php:1241
+#: subme.php:237
+#: subme.php:1363
 #@ subme
 msgid "Thank you for confirming your subscription"
 msgstr "Bedankt voor het bevestigen van je inschrijving"
 
-#: subme.php:216
+#: subme.php:239
 #@ subme
 msgid "You have successfully unsubscribed"
 msgstr "Je bent succesvol ingeschreven"
 
-#: subme.php:218
+#: subme.php:241
 #@ subme
 msgid "Something unexpected has happend."
 msgstr "Sorry, maar er is iets onverwachts gebeurd."
 
-#: subme.php:237
-#: subme.php:562
-#: subme.php:637
-#: subme.php:728
-#: subme.php:1264
+#: subme.php:260
+#: subme.php:585
+#: subme.php:687
+#: subme.php:778
+#: subme.php:1386
 #@ subme
 msgid "Sorry, but this does not seem like a valid email address."
 msgstr "Sorry, maar dit lijkt geen geldig e-mailadres te zijn."
 
-#: subme.php:255
-#: subme.php:1282
+#: subme.php:278
+#: subme.php:1404
 #@ subme
 msgid "Unsubscribe"
 msgstr "Afmelden"
 
-#: subme.php:573
-#: subme.php:660
+#: subme.php:596
+#: subme.php:710
 #@ subme
 msgid "Sorry, but this email address has already subscribed."
 msgstr "Sorry, maar dit e-mailadres is al ingeschreven."
 
-#: subme.php:673
-#: subme.php:754
-#: subme.php:1245
+#: subme.php:723
+#: subme.php:804
+#: subme.php:1367
 #@ subme
 msgid "Sorry, but something went wrong."
 msgstr "Sorry, maar er is iets onverwachts gebeurd."
 
-#: subme.php:684
+#: subme.php:734
 #@ subme
 msgid "subscribe"
 msgstr "aanmelden"
 
-#: subme.php:696
+#: subme.php:746
 #, php-format
 #@ subme
 msgid "A new user has requested to subscribe to %s"
 msgstr "Een nieuwe gebruiker heeft een aanmeldingsverzoek gemaakt."
 
-#: subme.php:717
-#: subme.php:797
+#: subme.php:767
+#: subme.php:847
 #@ subme
 msgid "A confirmation message is on its way!"
 msgstr "Een bevestigingsbericht is verstuurd!"
 
-#: subme.php:737
+#: subme.php:787
 #@ subme
 msgid "Sorry, but this email address has not subscribed."
 msgstr "Sorry, maar dit e-mailadres is niet ingeschreven."
 
-#: subme.php:764
+#: subme.php:814
 #@ subme
 msgid "unsubscribe"
 msgstr "afmelden"
 
-#: subme.php:776
+#: subme.php:826
 #, php-format
 #@ subme
 msgid "A user has requested to unsubscribe from %s"
 msgstr "Een abonnee heeft verzocht zich af te melden van %s"
 
-#: subme.php:948
+#: subme.php:1001
+#: subme.php:1101
 #@ subme
 msgid "Please select the action you want to take."
 msgstr "Selecteer welke actie je wilt uitvoeren."
 
-#: subme.php:951
-#: subme.php:982
+#: subme.php:1004
+#: subme.php:1104
 #@ subme
 msgid "Please select at least one email address."
 msgstr "Selecteer minstens één e-mailadres."
 
-#: subme.php:251
-#: subme.php:1278
+#: subme.php:274
+#: subme.php:1400
 #@ subme
 msgid "Your email address:"
 msgstr "Jouw e-mailadres:"
 
-#: subme.php:1243
+#: subme.php:1365
 #@ subme
 msgid "You have successfully unsubscribed."
 msgstr "Je hebt je succesvol afgemeld."
@@ -147,73 +148,68 @@ msgstr "Je hebt je succesvol afgemeld."
 msgid "You do not have the right permissions to view the queue. Please contact the Administrator if you feel that this should not be the case."
 msgstr "Je hebt niet voldoende rechten om de e-mail wachtrij in te mogen zien. Neem contact op met de beheerder als je van mening bent dat dit wel zou moeten."
 
-#: include/queue.php:41
-#@ subme
-msgid "Email queue"
-msgstr "E-mail wachtrij"
-
-#: include/queue.php:98
-#: include/subscribers.php:105
+#: include/queue.php:104
+#: include/subscribers.php:146
 #@ subme
 msgid "Bulk Actions"
 msgstr "Bulkacties"
 
-#: include/queue.php:99
-#: include/subscribers.php:106
+#: include/queue.php:105
+#: include/subscribers.php:147
 #@ subme
 msgid "Delete"
 msgstr "Verwijderen"
 
-#: include/queue.php:101
-#: include/subscribers.php:110
+#: include/queue.php:107
+#: include/subscribers.php:151
 #@ subme
 msgid "Apply"
 msgstr "Toepassen"
 
-#: include/queue.php:114
-#: include/subscribers.php:124
+#: include/queue.php:120
+#: include/subscribers.php:165
 #@ subme
 msgid "Go to the first page"
 msgstr "Ga naar de eerste pagina"
 
-#: include/queue.php:123
-#: include/subscribers.php:133
+#: include/queue.php:129
+#: include/subscribers.php:174
 #@ subme
 msgid "Go to the previous page"
 msgstr "Ga naar de vorige pagina"
 
-#: include/queue.php:137
-#: include/subscribers.php:147
+#: include/queue.php:143
+#: include/subscribers.php:188
 #@ subme
 msgid "Go to the next page"
 msgstr "Ga naar de volgende pagina"
 
-#: include/queue.php:146
-#: include/subscribers.php:156
+#: include/queue.php:152
+#: include/subscribers.php:197
 #@ subme
 msgid "Go to the last page"
 msgstr "Ga naar de laatste pagina"
 
-#: include/queue.php:170
-#: include/queue.php:234
+#: include/queue.php:176
+#: include/queue.php:240
 #@ subme
 msgid "ID"
 msgstr "ID"
 
-#: include/queue.php:184
-#: include/queue.php:248
+#: include/queue.php:190
+#: include/queue.php:254
 #@ subme
 msgid "From"
 msgstr "Van"
 
-#: include/queue.php:198
-#: include/queue.php:262
+#: include/queue.php:204
+#: include/queue.php:268
 #@ subme
 msgid "To"
 msgstr "Naar"
 
-#: include/queue.php:212
-#: include/queue.php:276
+#: include/queue.php:218
+#: include/queue.php:282
 #@ subme
 msgid "Subject"
 msgstr "Onderwerp"
@@ -223,29 +219,19 @@ msgstr "Onderwerp"
 msgid "You do not have the right permissions to view the subscribers. Please contact the Administrator if you feel that this should not be the case."
 msgstr "Je hebt niet voldoende rechten om de abonnees in te mogen zien. Neem contact op met de beheerder als je van mening bent dat dit wel zou moeten."
 
-#: include/subscribers.php:37
-#@ subme
-msgid "Add Subscriber"
-msgstr "Abonnee toevoegen"
-
-#: include/subscribers.php:43
-#@ subme
-msgid "Enter the email address that you would like to add"
-msgstr "Voer het e-mailadres in dat je wilt toevoegen"
-
-#: include/subscribers.php:181
-#: include/subscribers.php:218
+#: include/subscribers.php:222
+#: include/subscribers.php:259
 #@ subme
 msgid "Email"
 msgstr "E-mail"
 
-#: include/subscribers.php:194
-#: include/subscribers.php:231
+#: include/subscribers.php:235
+#: include/subscribers.php:272
 #@ subme
 msgid "Date"
 msgstr "Datum"
 
-#: include/subscribers.php:47
+#: include/subscribers.php:82
 #@ subme
 msgid "Add"
 msgstr "Toevoegen"
@@ -441,12 +427,12 @@ msgstr "Stuur bevestigingse-mails namens:"
 msgid "Send new post emails from:"
 msgstr "Stuur nieuwe berichten e-mails namens:"
 
-#: include/subscribers.php:107
+#: include/subscribers.php:148
 #@ subme
 msgid "Activate"
 msgstr "Activeer"
 
-#: include/subscribers.php:108
+#: include/subscribers.php:149
 #@ subme
 msgid "Deactivate"
 msgstr "Deactiveer"
@@ -456,13 +442,13 @@ msgstr "Deactiveer"
 msgid "SubMe cannot be activated as a network plugin. Please activate it at on a site level."
 msgstr "SubMe kan niet geactiveerd worden als een netwerk plugin. Activeer de plugin op site-niveau."
 
-#: subme.php:697
+#: subme.php:747
 #, php-format
 #@ subme
 msgid "%s has requested to subscribe to %s"
 msgstr "%s heeft zich aangemeld voor %s."
 
-#: subme.php:777
+#: subme.php:827
 #, php-format
 #@ subme
 msgid "%s has requested to unsubscribe from %s"
@@ -473,40 +459,40 @@ msgstr "%s heeft zich afgemeld van %s."
 msgid "Send confirmation emails via the queue:"
 msgstr "Stuur bevestigingse-mails via de e-mail wachtrij:"
 
-#: subme.php:345
+#: subme.php:368
 #@ subme
 msgid "Failed to get the site admin ID."
 msgstr "Het was niet mogelijk de site admin ID te verkrijgen."
 
-#: subme.php:354
+#: subme.php:377
 #@ subme
 msgid "There is no default SubMe page configured."
 msgstr "Er is nog geen standaard SubMe pagina geconfigureerd."
 
-#: subme.php:360
+#: subme.php:383
 #@ subme
 msgid "The default SubMe page that is configured does not exists anymore."
 msgstr "De standaard SubMe pagina die is geconfigureerd bestaat niet meer."
 
-#: include/queue.php:105
-#: include/subscribers.php:115
+#: include/queue.php:111
+#: include/subscribers.php:156
 #@ subme
 msgid "items"
 msgstr "items"
 
-#: include/queue.php:105
-#: include/subscribers.php:115
+#: include/queue.php:111
+#: include/subscribers.php:156
 #@ subme
 msgid "item"
 msgstr "item"
 
-#: subme.php:652
+#: subme.php:702
 #@ subme
 msgid "You are moving too fast. Please be patient."
 msgstr "Je gaat te snel. Heb heel even geduld."
 
-#: include/queue.php:325
-#: include/subscribers.php:265
+#: include/queue.php:331
+#: include/subscribers.php:306
 #@ subme
 msgid "No items found."
 msgstr "Geen items gevonden."
@@ -572,4 +558,71 @@ msgstr "Opslaan"
 #@ subme
 msgid "Admin email"
 msgstr "Beheerders e-mail"
+
+#: include/subscribers.php:315
+#@ subme
+msgid "Export as CSV"
+msgstr "Exporteer als CSV-bestand"
+
+#: include/subscribers.php:53
+#@ subme
+msgid "Add a single subscriber"
+msgstr "Voeg een enkele abonnee toe"
+
+#: include/subscribers.php:56
+#@ subme
+msgid "Import CSV file"
+msgstr "Importeer CSV-bestand"
+
+#: include/subscribers.php:72
+#@ subme
+msgid "First line is considered to contain the headers. Each record should be on a separate line."
+msgstr "De eerste regel wordt verwacht dat die de headers bevat. Elk record dient op een afzonderlijke regel te staan."
+
+#: include/subscribers.php:85
+#@ subme
+msgid "Upload and import CSV file"
+msgstr "Upload en importeer CSV-bestand"
+
+#: subme.php:998
+#, php-format
+#@ subme
+msgid "Added %s"
+msgstr "Toegevoegd %s"
+
+#: subme.php:1027
+#@ subme
+msgid "Please select a CSV file to upload."
+msgstr "Select een CSV-bestand."
+
+#: subme.php:1070
+#, php-format
+#@ subme
+msgid "Imported %d %s."
+msgstr "Geïmporteerd %d %s"
+
+#: subme.php:1070
+#@ subme
+msgid "email address"
+msgstr "e-mailadres"
+
+#: subme.php:1070
+#@ subme
+msgid "email adresses"
+msgstr "e-mailadressen"
+
+#: subme.php:1075
+#@ subme
+msgid "Invalid CSV file format detected."
+msgstr "Ongelding CSV-formaat gedetecteerd."
+
+#: subme.php:1081
+#@ subme
+msgid "Failed importing the following email addresses:"
+msgstr "Het is mislukt om de volgende e-mailadressen te importeren:"
+
+#: include/subscribers.php:61
+#@ subme
+msgid "The email address that you would like to add:"
+msgstr "Het e-mailadres dat je wilt toevoegen:"
 

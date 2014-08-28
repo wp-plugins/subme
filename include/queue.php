@@ -23,23 +23,29 @@ if ( isset( $_POST['form'] ) ) {
 
 global $wpdb;
 global $sm_error;
+global $sm_updated;
+
+/* Display updated if any */
+if ( strlen( $sm_updated ) > 0 ) {
+	$this->display_admin_updated( $sm_updated );
+	$sm_updated = '';
+}
 
 /* Display error if any */
 if ( strlen( $sm_error ) > 0 ) {
-	$this->display_admin_error( esc_html( $sm_error ) );
+	$this->display_admin_error( $sm_error );
 	$sm_error = '';
 }
 
 ?>
 
 <div class="wrap">
+	<h2>Queue</h2>
 	<form method="post">
 		<?php wp_nonce_field( 'subme_queue', 'subme_queue_nonce', true, true ); ?>
 		<input type="hidden" name="form" value="queue">
 
 		<div>
-			<h2><?php echo __( 'Email queue', 'subme' ); ?></h2>
-		
 			<div class="tablenav top">
 
 			<?php
@@ -322,7 +328,7 @@ if ( strlen( $sm_error ) > 0 ) {
 							$counter++;
 						}
 					} else {
-						echo '<tr><td colspan="5">' . __( 'No items found.', 'subme' ) . '</td></tr>';
+						echo '<tr><td colspan="5"><i>' . __( 'No items found.', 'subme' ) . '</i></td></tr>';
 					}	
 				?>
 			</table>
