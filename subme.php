@@ -4,7 +4,7 @@
  * Plugin Name: SubMe
  * Plugin URI:
  * Description: SubMe notifies subscribers by email when an new post has been published.
- * Version: 1.2.1
+ * Version: 1.2.2
  * Author: Dennis Pellikaan
  * Author URI: https://supongo.org
  * Licence: GPL3
@@ -114,6 +114,15 @@ class subme {
 		/* Trigger when new messages are posted */
 		add_action ( 'transition_post_status', array( &$this, 'new_post' ), 10, 3 );
 
+		/* Check if subscribers need to be exported */
+		if ( isset( $_POST['export'] ) ) {
+			/* Check user's permissions */
+			$current_user = wp_get_current_user();
+			if ( is_super_admin() || $current_user->ID == $this->sm_options['delegate_subscribers_to'] ) {
+				$this->export_subscribers();
+			}
+		}
+
 		/* Check if a subme action (subscribe/unsubscribe) is required. 
 		 * This is triggered when a user confirms using the link sent by email */
 		if ( isset( $_GET['subme'] ) ) {
@@ -166,10 +175,23 @@ class subme {
 		wp_enqueue_script( 'subme_js', plugins_url( 'subme/js/subme.js', dirname( __FILE__ ) ) );
 	}
 
+	/* Display admin update message */
+	function display_admin_updated( $msg ) {
+		?>
+		
+		<div class="updated">
+			<p>
+				<strong><?php echo esc_html( $msg ); ?></strong>
+			</p>
+		</div>
+		
+		<?php
+	}
+
 	/* Display admin error */
 	function display_admin_error( $msg ) {
 		?>
-
+	
 		<div class="error">
 			<p>
 				<strong><?php echo esc_html( $msg ); ?></strong>
@@ -552,17 +574,17 @@ class subme {
 	}
 
 	/* Directly add a subscriber via the admin panel */
-	function add_subscriber( $email ) {
+	function add_subscriber( $email, $active = 1 ) {
 		global $wpdb;
 		global $sm_error;
 
-		$email = strtolower( $email );
+		$email = strtolower( trim( $email ) );
 
 		/* Check if the email is valid */
 		if ( ! $this->is_valid_email( $email ) ) {
 			$sm_error = __( 'Sorry, but this does not seem like a valid email address.', 'subme' );
 
-			return;
+			return false;
 		}
 
 		$table = $wpdb->prefix . 'subme';
@@ -573,18 +595,45 @@ class subme {
 		if ( $results ) {
 			$sm_error = __( 'Sorry, but this email address has already subscribed.', 'subme' );
 
-			return;
+			return false;
 		}
 
 		/* Insert the new subscriber */
 		$query = $wpdb->prepare( "INSERT INTO $table (email, active, timestamp, ip, conf_hash, conf_timestamp, conf_ip) VALUES (
-			%s, '1', %d, %s, NULL, %d, '')",
+			%s, %d, %d, %s, NULL, %d, '')",
 				$email,
+				$active,
 				time(),
 				$this->get_ip(),
 				time()
 			);
 		$wpdb->query( $query );
+
+		return true;
+	}
+
+	/* Export subscribers as CSV file */
+	function export_subscribers() {
+		global $wpdb;
+		global $sm_error;
+
+		$table = $wpdb->prefix . 'subme';
+		$results = $wpdb->get_results( "SELECT active, email FROM $table" );
+
+		/* Send out headers */
+		header( 'Cache-Control: no-cache, no-store, must-revalidate' );
+		header( 'Pragma: no-cache' );
+		header( 'Expires: 0' );
+		header( 'Content-Type: application/octet-stream' );
+		header( 'Content-Disposition: attachment; filename="subscribers_' . date( 'Ymd' ). '.csv";' );
+		header( 'Content-Transfer-Encoding: binary' );
+
+		echo "Active,Email\r\n";
+		foreach ( $results as $result ) {
+			echo ( $result->active ? 'Yes' : 'No' ) . ',', $result->email . "\r\n";
+		}
+		
+		exit(0);
 	}
 
 	/* Delete a subscriber from the database */
@@ -929,6 +978,7 @@ class subme {
 	/* Process $_POST requests */
 	function process_post() {
 		global $sm_error;
+		global $sm_updated;
 
 		if ( ! isset( $_POST ) || ! isset( $_POST['form'] ) ) {
 			return;
@@ -944,11 +994,13 @@ class subme {
 				}
 
 				if ( isset( $_POST['subscribe'] ) && isset( $_POST['email'] ) ) {
-					$this->add_subscriber( $_POST['email'] );
+					if ( $this->add_subscriber( $_POST['email'] ) ) {
+						$sm_updated = sprintf( __( "Added %s", 'subme' ), $_POST['email'] );
+					}
 				} elseif ( isset( $_POST['apply'] ) && '-1' === $_POST['action'] ) {
 					$sm_error = __( 'Please select the action you want to take.', 'subme' );
 				} elseif ( isset( $_POST['apply'] ) ) {
-					if ( ! isset( $_POST['cb'] ) ) {
+					if ( ! isset( $_POST['cb'] ) || ! is_array( $_POST['cb'] ) ) {
 						$sm_error = __( 'Please select at least one email address.', 'subme' );
 
 						return;
@@ -970,6 +1022,73 @@ class subme {
 							$this->deactivate_subscriber( absint( $value ) );
 						}
 					}
+				} elseif ( isset( $_POST['import'] ) ) {
+					if ( $_FILES['file']['error'] > 0 ) {
+						$sm_error = __( 'Please select a CSV file to upload.', 'subme' );
+
+						return;
+					}
+					
+					/* Read all records and try to import them */
+					$file = file_get_contents( $_FILES['file']['tmp_name'] );
+					$records = preg_split( '/\r\n|\r|\n/', $file );
+					$count = 0;
+					$imported = 0;
+					$failures = array();
+					$format_error = false;
+					foreach ( $records as $record ) {
+						$count++;
+
+						/* Skip the first line */
+						if ( 1 == $count ) continue;
+
+						/* Ignore empty lines */
+						if ( empty( $record ) ) continue;
+
+						$data = explode( ',', $record );
+
+						/* Check if there are two columns (Active,Email) */
+						if ( 2 != count( $data) ) {
+							$format_error = true;
+
+							continue;
+						}
+		
+						$active = ( 'Yes' === $data[0] ? 1 : 0 );
+
+						if ( ! $this->add_subscriber( $data[1], $active ) ) {
+							/* Only add printable data to failures. */
+							if ( 0 < strlen( esc_html( $data[1] ) ) ) {
+								$failures[] = $data[1];
+							}
+						} else {
+							$imported++;
+						}						
+					}
+
+					/* Show number of imported emails */
+					$sm_updated = sprintf ( __( "Imported %d %s.", 'subme' ), $imported, ( 1 == $imported ? __( 'email address', 'subme' ) : __( 'email adresses', 'subme' ) ) );
+
+					/* Show errors */
+					$sm_error = '';
+					if ( $format_error ) {
+						$sm_error = __( 'Invalid CSV file format detected.', 'subme' );
+					}
+					if ( 0 < count( $failures ) ) {
+						$count = 0;
+						
+						$sm_error .= ( '' == $sm_error ? '' : ' ' );
+						$sm_error .= __( 'Failed importing the following email addresses:', 'subme' ) . ' ';
+						foreach ( $failures as $email ) {
+							if ( 0 == $count ) {
+								$sm_error .= $email;
+							} else {
+								$sm_error .= ', ' . $email;
+							}
+
+							$count++;
+						}
+					}
 				}
 			break;
 			case 'queue':
@@ -978,8 +1097,10 @@ class subme {
 					break;
 				}
 
-				if ( isset( $_POST['apply'] ) && 'delete' === $_POST['action'] ) {
-					if( ! isset( $_POST['cb'] ) ) {
+				if ( isset( $_POST['apply'] ) && '-1' === $_POST['action'] ) {
+					$sm_error = __( 'Please select the action you want to take.', 'subme' );
+				} elseif ( isset( $_POST['apply'] ) && 'delete' === $_POST['action'] ) {
+					if( ! isset( $_POST['cb'] ) || ! is_array( $_POST['cb'] ) ) {
 						$sm_error = __( 'Please select at least one email address.', 'subme' );
 
 						return;

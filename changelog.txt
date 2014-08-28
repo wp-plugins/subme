@@ -1,3 +1,9 @@
+= 1.2.2 =
+* Added CSV export
+* Added CSV import
+* Changed <h2> tags in subscribers.php to <h3> tags. Added single <h2> title in subscribers.php and queue.php. Error messages are now properly shown on top of the page.
+* Besides showing error messages, info messages are now also shown.
+
 = 1.2.1 =
 * Added option to fix the Return-Path for phpmailer
 * Fixed some Dutch translations
@@ -17,4 +23,3 @@
 * Added message 'No items found' for empty tables in include/subscribers.php and include/queue.php.
 * Improved retrieval of AUTO_INCREMENT value when a new subscriber is added to the database.
 * Code cleanup
-
