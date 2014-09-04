@@ -1,7 +1,7 @@
 === SubMe ===
 Tags: cron, email, e-mail, mailing list, mailinglist, mail list, maillist, notify, notification, plain text, plaintext, post, subscribe, subscribers, subscription
 Requires at least: 3.9
-Tested up to: 3.9.2
+Tested up to: 4.0
 Stable tag: 1.2.2
 License: GPL3
 
