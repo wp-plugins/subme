@@ -4,7 +4,7 @@
  * Plugin Name: SubMe
  * Plugin URI:
  * Description: SubMe notifies subscribers by email when an new post has been published.
- * Version: 1.2.2
+ * Version: 1.2.3
  * Author: Dennis Pellikaan
  * Author URI: https://supongo.org
  * Licence: GPL3
@@ -463,8 +463,8 @@ class subme {
 	function mail( $recipient, $sender, $name, $subject, $message ) {
 		if ( '' == $recipient  || '' == $subject || '' == $message ) return;
 
-		$subject = wp_strip_all_tags( stripslashes( $subject ) );
-		$message = wp_strip_all_tags( stripslashes( $message ) );
+		$subject = stripslashes( $subject );
+		$message = stripslashes( $message );
 	
 		$headers[] = "Content-type:text/plain; charset=UTF-8";
 

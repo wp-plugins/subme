@@ -1,3 +1,7 @@
+= 1.2.3 =
+* Improved visual layout of Admin settings
+* Improved conversion of html to text when publishing new posts
+
 = 1.2.2 =
 * Added CSV export
 * Added CSV import
