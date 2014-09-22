@@ -14,6 +14,7 @@ SubMe provides a simple subscription management and email notification system fo
 = Features =
 
 * Email verification.
+* Subscription widget.
 * Customize email templates.
 * Subscribers management.
 * Delegate admin settings to different users.

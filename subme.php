@@ -6,7 +6,7 @@
  * Description: SubMe notifies subscribers by email when an new post has been published.
  * Version: 1.2.3
  * Author: Dennis Pellikaan
- * Author URI: https://supongo.org
+ * Author URI: https://supongo.org/subme/
  * Licence: GPL3
  * Text Domain: SubMe
 */
