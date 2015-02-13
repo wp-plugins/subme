@@ -1,3 +1,14 @@
+= 2.0 =
+* Added Subscriber Options to control which authors or blogs users can subscribe to.
+* Added option to automatically subscribe user upon user registration.
+* Added subscription management for subscribers.
+* Added custom CSS feature.
+* Restructured the HTML code of the frontend forms and widget to allow for better CSS customization.
+* Removed disclosure of Wordpress user IDs in SubMe forms.
+* Removed listing of Wordpress users with 'Subscriber' role in all SubMe options.
+* Cleaned up usage of the stripslashes function.
+* Fixed <? to <?php in include/subscribers.php and include/queue.php
+
 = 1.2.3 =
 * Improved visual layout of Admin settings
 * Improved conversion of html to text when publishing new posts
