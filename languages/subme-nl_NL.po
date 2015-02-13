@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: SubMe v1.2.3\n"
+"Project-Id-Version: SubMe v2.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2014-09-07 16:35:53+0000\n"
+"PO-Revision-Date: 2015-02-13 01:13:32+0000\n"
 "Last-Translator: admin <wordpress@supongo.org>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -20,128 +20,135 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Textdomain-Support: yes"
 
-#: subme.php:161
+#: subme.php:182
 #@ subme
 msgid "Settings"
 msgstr "Instellingen"
 
 #: include/subscribers.php:93
-#: subme.php:165
+#: subme.php:186
 #@ subme
 msgid "Subscribers"
 msgstr "Abonnees"
 
-#: subme.php:169
+#: subme.php:190
 #@ subme
 msgid "Queue"
 msgstr "Wachtrij"
 
-#: subme.php:207
-#: subme.php:276
-#: subme.php:1402
+#: subme.php:243
+#: subme.php:592
+#: subme.php:2546
 #@ subme
 msgid "Subscribe"
-msgstr "Aanmelden"
+msgstr "Inschrijven"
 
-#: subme.php:237
-#: subme.php:1363
+#: subme.php:279
+#: subme.php:2483
 #@ subme
 msgid "Thank you for confirming your subscription"
 msgstr "Bedankt voor het bevestigen van je inschrijving"
 
-#: subme.php:239
+#: subme.php:281
 #@ subme
 msgid "You have successfully unsubscribed"
-msgstr "Je bent succesvol ingeschreven"
+msgstr "Je bent succesvol uitgeschreven"
 
-#: subme.php:241
+#: subme.php:283
+#: subme.php:296
+#: subme.php:313
+#: subme.php:1667
 #@ subme
 msgid "Something unexpected has happend."
 msgstr "Sorry, maar er is iets onverwachts gebeurd."
 
-#: subme.php:260
-#: subme.php:585
-#: subme.php:687
-#: subme.php:778
-#: subme.php:1386
+#: subme.php:1035
+#: subme.php:1142
+#: subme.php:1242
+#: subme.php:1327
+#: subme.php:1656
 #@ subme
 msgid "Sorry, but this does not seem like a valid email address."
 msgstr "Sorry, maar dit lijkt geen geldig e-mailadres te zijn."
 
-#: subme.php:278
-#: subme.php:1404
+#: subme.php:529
+#: subme.php:598
+#: subme.php:2552
 #@ subme
 msgid "Unsubscribe"
-msgstr "Afmelden"
+msgstr "Uitschrijven"
 
-#: subme.php:596
-#: subme.php:710
+#: subme.php:1046
+#: subme.php:1165
 #@ subme
 msgid "Sorry, but this email address has already subscribed."
 msgstr "Sorry, maar dit e-mailadres is al ingeschreven."
 
-#: subme.php:723
-#: subme.php:804
-#: subme.php:1367
+#: subme.php:1186
+#: subme.php:1270
+#: subme.php:1352
+#: subme.php:1795
+#: subme.php:2487
 #@ subme
 msgid "Sorry, but something went wrong."
 msgstr "Sorry, maar er is iets onverwachts gebeurd."
 
-#: subme.php:734
+#: subme.php:1200
 #@ subme
 msgid "subscribe"
-msgstr "aanmelden"
+msgstr "inschrijven"
 
-#: subme.php:746
+#: subme.php:1212
 #, php-format
 #@ subme
 msgid "A new user has requested to subscribe to %s"
-msgstr "Een nieuwe gebruiker heeft een aanmeldingsverzoek gemaakt."
+msgstr "Een nieuwe gebruiker heeft een inschrijvingsverzoek gemaakt."
 
-#: subme.php:767
-#: subme.php:847
+#: subme.php:1233
+#: subme.php:1316
 #@ subme
 msgid "A confirmation message is on its way!"
 msgstr "Een bevestigingsbericht is verstuurd!"
 
-#: subme.php:787
+#: subme.php:1251
+#: subme.php:1336
 #@ subme
 msgid "Sorry, but this email address has not subscribed."
 msgstr "Sorry, maar dit e-mailadres is niet ingeschreven."
 
-#: subme.php:814
+#: subme.php:1283
 #@ subme
 msgid "unsubscribe"
-msgstr "afmelden"
+msgstr "uitschrijven"
 
-#: subme.php:826
+#: subme.php:1295
 #, php-format
 #@ subme
 msgid "A user has requested to unsubscribe from %s"
-msgstr "Een abonnee heeft verzocht zich af te melden van %s"
+msgstr "Een abonnee heeft verzocht zich uit te schrijven van %s"
 
-#: subme.php:1001
-#: subme.php:1101
+#: subme.php:1828
+#: subme.php:1928
 #@ subme
 msgid "Please select the action you want to take."
 msgstr "Selecteer welke actie je wilt uitvoeren."
 
-#: subme.php:1004
-#: subme.php:1104
+#: subme.php:1831
+#: subme.php:1931
 #@ subme
 msgid "Please select at least one email address."
 msgstr "Selecteer minstens één e-mailadres."
 
-#: subme.php:274
-#: subme.php:1400
+#: subme.php:579
+#: subme.php:2533
 #@ subme
 msgid "Your email address:"
 msgstr "Jouw e-mailadres:"
 
-#: subme.php:1365
+#: subme.php:2485
 #@ subme
 msgid "You have successfully unsubscribed."
-msgstr "Je hebt je succesvol afgemeld."
+msgstr "Je hebt je succesvol uitgeschreven."
 
 #: include/queue.php:10
 #@ subme
@@ -236,182 +243,183 @@ msgstr "Datum"
 msgid "Add"
 msgstr "Toevoegen"
 
-#: include/settings.php:14
+#: include/settings.php:15
 #@ subme
 msgid "You do not have the right permissions to view or change any of the settings. Please contact the Administrator if you feel that this should not be the case."
 msgstr "Je hebt niet voldoende rechten om de instellingen in te mogen zien. Neem contact op met de beheerder als je van mening bent dat dit wel zou moeten."
 
-#: include/settings.php:35
+#: include/settings.php:36
 #@ subme
 msgid "Admin"
 msgstr "Beheer"
 
-#: include/settings.php:39
+#: include/settings.php:40
 #@ subme
 msgid "Email Settings"
 msgstr "E-mailinstellingen"
 
-#: include/settings.php:43
+#: include/settings.php:44
 #@ subme
 msgid "Templates"
 msgstr "Sjablonen"
 
-#: include/settings.php:47
-#: include/settings.php:537
+#: include/settings.php:52
+#: include/settings.php:832
 #@ subme
 msgid "Appearance"
 msgstr "Weergave"
 
-#: include/settings.php:132
+#: include/settings.php:142
 #@ subme
 msgid "Delegate Email Settings to:"
 msgstr "Delegeer E-mailinstellingen aan:"
 
-#: include/settings.php:148
+#: include/settings.php:158
 #@ subme
 msgid "Delegate Templates to:"
 msgstr "Delegeer Templates aan:"
 
-#: include/settings.php:164
+#: include/settings.php:190
 #@ subme
 msgid "Delegate Appearance to:"
 msgstr "Delegeer Weergave aan:"
 
-#: include/settings.php:180
+#: include/settings.php:206
 #@ subme
 msgid "Delegate Subscribers to:"
 msgstr "Delegeer Abonnees aan:"
 
-#: include/settings.php:196
+#: include/settings.php:222
 #@ subme
 msgid "Delegate Queue to:"
 msgstr "Delegeer E-mail wachtrij aan:"
 
-#: include/settings.php:233
+#: include/settings.php:261
 #@ subme
 msgid "Send notifications for:"
-msgstr "Stuur notificaties voor:"
+msgstr "Verstuur notificaties voor:"
 
-#: include/settings.php:236
+#: include/settings.php:264
 #@ subme
 msgid "subscribers"
-msgstr "aanmeldingen"
+msgstr "inschrijvingen"
 
-#: include/settings.php:237
+#: include/settings.php:265
 #@ subme
 msgid "unsubscribers"
-msgstr "afmeldingen"
+msgstr "uitschrijvingen"
 
-#: include/settings.php:238
+#: include/settings.php:266
 #@ subme
 msgid "both"
 msgstr "beide"
 
-#: include/settings.php:239
+#: include/settings.php:267
 #@ subme
 msgid "none"
 msgstr "geen van beide"
 
-#: include/settings.php:351
+#: include/settings.php:401
 #@ subme
 msgid "Send emails for protected posts:"
-msgstr "Stuur e-mails voor bescherme publicaties:"
+msgstr "Verstuur e-mails voor bescherme publicaties:"
 
-#: include/settings.php:360
+#: include/settings.php:410
 #@ subme
 msgid "Send emails for private posts:"
-msgstr "Stuur e-mails voor privé publicaties:"
+msgstr "Verstuur e-mails voor privé publicaties:"
 
-#: include/settings.php:379
+#: include/settings.php:429
 #@ subme
 msgid "Cron jobs enabled:"
 msgstr "Cron opdrachten ingeschakeld:"
 
-#: include/settings.php:397
+#: include/settings.php:456
 #@ subme
 msgid "How often does the cron job run (minutes)?"
 msgstr "Hoe vaak draaien de cron opdrachten (minuten):"
 
-#: include/settings.php:405
+#: include/settings.php:464
 #@ subme
 msgid "Maximum numbers of emails allowed to send per burst:"
 msgstr "Maximaal aantal e-mails per cron opdracht:"
 
-#: include/settings.php:453
-#: include/settings.php:485
+#: include/settings.php:512
+#: include/settings.php:545
+#: include/settings.php:559
 #@ subme
 msgid "Subject line:"
 msgstr "Onderwerpregel:"
 
-#: include/settings.php:463
+#: include/settings.php:522
 #@ subme
 msgid "KEYWORD SUBSTITUTION"
 msgstr "TREFWOORD SUBSTITUTIE"
 
-#: include/settings.php:466
+#: include/settings.php:525
 #@ subme
 msgid "Action performed. This can be either <i>subscribe</i> or <i>unsubscribe</i>"
-msgstr "De uitgevoerde actie. Dit kan zijn: <i>aanmelden</i> of <i>afmelden</i>"
+msgstr "De uitgevoerde actie. Dit kan zijn: <i>inschrijven</i> of <i>uitschrijven</i>"
 
-#: include/settings.php:467
+#: include/settings.php:526
 #@ subme
 msgid "The post author's name"
 msgstr "De schrijver van de publicatie"
 
-#: include/settings.php:470
+#: include/settings.php:529
 #@ subme
 msgid "The (un)subscribe link for confirmation"
 msgstr "De aan-/afmeldlink ter bevestiging"
 
-#: include/settings.php:471
+#: include/settings.php:530
 #@ subme
 msgid "The post's link"
 msgstr "Link naar de publicatie"
 
-#: include/settings.php:472
+#: include/settings.php:531
 #@ subme
 msgid "Snippet of the blog post"
 msgstr "Uittreksel van de publicatie"
 
-#: include/settings.php:473
+#: include/settings.php:532
 #@ subme
 msgid "The post's title"
 msgstr "De titel van de publicatie"
 
-#: include/settings.php:483
+#: include/settings.php:543
 #@ subme
 msgid "Notification email"
 msgstr "Notificatie e-mail"
 
-#: include/settings.php:514
+#: include/settings.php:733
 #@ subme
 msgid "Default SubMe page:"
 msgstr "Standaard SubMe pagina:"
 
-#: include/settings.php:518
+#: include/settings.php:737
 #@ subme
 msgid "Select a page"
 msgstr "Selecteer een pagina"
 
-#: include/settings.php:547
+#: include/settings.php:842
 #@ subme
 msgid "Show link in META"
 msgstr "Toon link in META"
 
-#: include/settings.php:551
+#: include/settings.php:846
 #@ subme
 msgid "Enable SubMe widget"
 msgstr "Activeer de SubMe widget"
 
-#: include/settings.php:293
+#: include/settings.php:317
 #@ subme
 msgid "Send confirmation emails from:"
-msgstr "Stuur bevestigingse-mails namens:"
+msgstr "Verstuur bevestigingse-mails namens:"
 
-#: include/settings.php:325
+#: include/settings.php:377
 #@ subme
 msgid "Send new post emails from:"
-msgstr "Stuur nieuwe berichten e-mails namens:"
+msgstr "Verstuur nieuwe berichten e-mails namens:"
 
 #: include/subscribers.php:148
 #@ subme
@@ -423,39 +431,34 @@ msgstr "Activeer"
 msgid "Deactivate"
 msgstr "Deactiveer"
 
-#: subme.php:54
+#: subme.php:56
 #@ subme
 msgid "SubMe cannot be activated as a network plugin. Please activate it at on a site level."
 msgstr "SubMe kan niet geactiveerd worden als een netwerk plugin. Activeer de plugin op site-niveau."
 
-#: subme.php:747
+#: subme.php:1213
 #, php-format
 #@ subme
 msgid "%s has requested to subscribe to %s"
-msgstr "%s heeft zich aangemeld voor %s."
+msgstr "%s heeft zich ingeschreven voor %s."
 
-#: subme.php:827
+#: subme.php:1296
 #, php-format
 #@ subme
 msgid "%s has requested to unsubscribe from %s"
-msgstr "%s heeft zich afgemeld van %s."
+msgstr "%s heeft zich uitgeschreven van %s."
 
-#: include/settings.php:388
-#@ subme
-msgid "Send confirmation emails via the queue:"
-msgstr "Stuur bevestigingse-mails via de e-mail wachtrij:"
-
-#: subme.php:368
+#: subme.php:805
 #@ subme
 msgid "Failed to get the site admin ID."
 msgstr "Het was niet mogelijk de site admin ID te verkrijgen."
 
-#: subme.php:377
+#: subme.php:814
 #@ subme
 msgid "There is no default SubMe page configured."
 msgstr "Er is nog geen standaard SubMe pagina geconfigureerd."
 
-#: subme.php:383
+#: subme.php:820
 #@ subme
 msgid "The default SubMe page that is configured does not exists anymore."
 msgstr "De standaard SubMe pagina die is geconfigureerd bestaat niet meer."
@@ -472,7 +475,7 @@ msgstr "items"
 msgid "item"
 msgstr "item"
 
-#: subme.php:702
+#: subme.php:1157
 #@ subme
 msgid "You are moving too fast. Please be patient."
 msgstr "Je gaat te snel. Heb heel even geduld."
@@ -483,64 +486,78 @@ msgstr "Je gaat te snel. Heb heel even geduld."
 msgid "No items found."
 msgstr "Geen items gevonden."
 
-#: include/settings.php:101
+#: include/settings.php:109
 #@ subme
 msgid "OK"
 msgstr "OK"
 
-#: include/settings.php:101
+#: include/settings.php:109
 #@ default
 msgid "NO, please check your settings."
 msgstr ""
 
-#: include/settings.php:332
-#: include/settings.php:428
+#: include/settings.php:384
+#: include/settings.php:487
 #@ subme
 msgid "Default"
 msgstr "Standaard"
 
-#: include/settings.php:336
+#: include/settings.php:388
 #@ subme
 msgid "Post Author"
 msgstr "Auteur"
 
-#: include/settings.php:354
-#: include/settings.php:363
-#: include/settings.php:382
-#: include/settings.php:391
+#: include/settings.php:404
+#: include/settings.php:413
+#: include/settings.php:432
+#: include/settings.php:441
+#: include/settings.php:450
+#: include/settings.php:591
+#: include/settings.php:601
+#: include/settings.php:765
+#: include/settings.php:775
+#: include/settings.php:803
+#: include/settings.php:813
 #@ subme
 msgid "yes"
 msgstr "ja"
 
-#: include/settings.php:355
-#: include/settings.php:364
-#: include/settings.php:383
-#: include/settings.php:392
+#: include/settings.php:405
+#: include/settings.php:414
+#: include/settings.php:433
+#: include/settings.php:442
+#: include/settings.php:451
+#: include/settings.php:592
+#: include/settings.php:602
+#: include/settings.php:766
+#: include/settings.php:776
+#: include/settings.php:804
+#: include/settings.php:814
 #@ subme
 msgid "no"
 msgstr "nee"
 
-#: include/settings.php:427
+#: include/settings.php:486
 #@ subme
 msgid "From address"
 msgstr "Verzendadres"
 
-#: include/settings.php:96
+#: include/settings.php:104
 #@ subme
 msgid "Plugin configured correctly:"
 msgstr "Plugin correct geconfigureerd:"
 
-#: include/settings.php:423
+#: include/settings.php:482
 #@ subme
 msgid "Set Return-Path header to:"
 msgstr "Stel Return-Path header in naar:"
 
-#: include/settings.php:567
+#: include/settings.php:881
 #@ subme
 msgid "Submit"
 msgstr "Opslaan"
 
-#: include/settings.php:426
+#: include/settings.php:485
 #@ subme
 msgid "Admin email"
 msgstr "Beheerders e-mail"
@@ -570,39 +587,39 @@ msgstr "De eerste regel wordt verwacht dat die de headers bevat. Elk record dien
 msgid "Upload and import CSV file"
 msgstr "Upload en importeer CSV-bestand"
 
-#: subme.php:998
+#: subme.php:1825
 #, php-format
 #@ subme
 msgid "Added %s"
 msgstr "Toegevoegd %s"
 
-#: subme.php:1027
+#: subme.php:1854
 #@ subme
 msgid "Please select a CSV file to upload."
 msgstr "Select een CSV-bestand."
 
-#: subme.php:1070
+#: subme.php:1897
 #, php-format
 #@ subme
 msgid "Imported %d %s."
 msgstr "Geïmporteerd %d %s"
 
-#: subme.php:1070
+#: subme.php:1897
 #@ subme
 msgid "email address"
 msgstr "e-mailadres"
 
-#: subme.php:1070
+#: subme.php:1897
 #@ subme
 msgid "email adresses"
 msgstr "e-mailadressen"
 
-#: subme.php:1075
+#: subme.php:1902
 #@ subme
 msgid "Invalid CSV file format detected."
 msgstr "Ongelding CSV-formaat gedetecteerd."
 
-#: subme.php:1081
+#: subme.php:1908
 #@ subme
 msgid "Failed importing the following email addresses:"
 msgstr "Het is mislukt om de volgende e-mailadressen te importeren:"
@@ -612,63 +629,329 @@ msgstr "Het is mislukt om de volgende e-mailadressen te importeren:"
 msgid "The email address that you would like to add:"
 msgstr "Het e-mailadres dat je wilt toevoegen:"
 
-#: include/settings.php:90
+#: include/settings.php:98
 #@ subme
 msgid "Plugin Status"
 msgstr "Plugin Status"
 
-#: include/settings.php:121
+#: include/settings.php:129
 #@ subme
 msgid "Delegations"
 msgstr "Bevoegdheden"
 
-#: include/settings.php:227
+#: include/settings.php:255
 #@ subme
 msgid "Subcriber Notifications"
-msgstr "Aanmeldingsnotificaties"
+msgstr "Inschrijving notificaties"
 
-#: include/settings.php:244
+#: include/settings.php:272
 #@ subme
 msgid "Send notifications to:"
 msgstr "Verstuur notificaties naar:"
 
-#: include/settings.php:262
+#: include/settings.php:288
 #@ subme
 msgid "Send notifications from:"
 msgstr "Verstuur notificaties namens:"
 
-#: include/settings.php:287
+#: include/settings.php:311
 #@ subme
 msgid "Confirmation Emails"
 msgstr "Bevestigins e-mails"
 
-#: include/settings.php:319
+#: include/settings.php:371
 #@ subme
 msgid "New Posts"
 msgstr "Nieuwe Publicaties"
 
-#: include/settings.php:373
+#: include/settings.php:423
 #@ subme
 msgid "Email Queue"
 msgstr "E-mailwachtrij"
 
-#: include/settings.php:417
+#: include/settings.php:476
 #@ subme
 msgid "Return-Path"
 msgstr "Return-Path"
 
-#: include/settings.php:451
+#: include/settings.php:510
 #@ subme
 msgid "Confirmation email"
 msgstr "Bevestigings e-mail"
 
-#: include/settings.php:508
+#: include/settings.php:727
 #@ subme
 msgid "SubMe Landing Page"
 msgstr "SubMe Landingspagina"
 
-#: include/settings.php:543
+#: include/settings.php:838
 #@ subme
 msgid "Visualization:"
 msgstr "Visualisatie:"
+
+#: include/options.php:35
+#@ subme
+msgid "[@@BLOGNAME] Please confirm your request"
+msgstr "[@@BLOGNAME] Bevestig alsjeblieft jouw verzoek"
+
+#: include/options.php:36
+#@ subme
+msgid ""
+"@@BLOGNAME has received a request to @@ACTION this email address. To complete your request please use the link below:\n"
+"\n"
+"@@LINK\n"
+"\n"
+"If you did not request this, please feel free to disregard this notice!\n"
+"\n"
+"Best regards,\n"
+"\n"
+"@@BLOGNAME"
+msgstr ""
+"[@@BLOGNAME] heeft het verzoek voor @@ACTION ontvangen voor dit e-mailadres. Indien je dit verzoek wil voltooien, klikt dan op onderstaande link:\n"
+"\n"
+"@@LINK\n"
+"\n"
+"Indien je dit niet hebt verzocht, kun je dit bericht negeren.\n"
+"\n"
+"Met vriendelijke groet,\n"
+"\n"
+"@BLOGNAME"
+
+#: include/options.php:46
+#@ subme
+msgid ""
+"@@BLOGNAME has posted a new item.\n"
+"\n"
+"\"@@SNIPPET\"\n"
+"\n"
+"You may view the latest post at\n"
+"@@PERMALINK\n"
+"\n"
+"You received this email because you asked to be notified when new posts are published.\n"
+"\n"
+"Best regards,\n"
+"\n"
+"@@BLOGLINK"
+msgstr ""
+"@@BLOGNAME heeft een nieuw bericht gepubliceerd.\n"
+"\n"
+"\\\"@@SNIPPET\\\"\n"
+"\n"
+"Je kunt dit bericht lezen door onderstaande link te volgen:\n"
+"\n"
+"@@PERMALINK\n"
+"\n"
+"Je hebt dit bericht ontangen, omdat je gevraagd hebt op de hoogte gehouden te worden van nieuwe berichten.\n"
+"\n"
+"Met vriendelijke groet,\n"
+"\n"
+"@@BLOGLINK"
+
+#: include/options.php:58
+#@ subme
+msgid "[@@BLOGNAME] Manage your subscription"
+msgstr "[@@BLOGNAME] Beheer je inschrijving"
+
+#: include/options.php:59
+#@ subme
+msgid ""
+"@@BLOGNAME has received a request to send you a link in order to manage your subscription, please use the link below:\n"
+"\n"
+"@@MANAGELINK\n"
+"\n"
+"If you did not request this, please feel free to disregard this notice!\n"
+"\n"
+"Best regards,\n"
+"\n"
+"@@BLOGNAME"
+msgstr ""
+"@@BLOGNAME heeft het verzoek ontvangen om een link te versturen voor het beheren van jouw inschrijving. Gebruik de link hieronder voor het beheren van de inschrijving:\n"
+"\n"
+"@@MANAGELINK\n"
+"\n"
+"Indien je dit niet hebt verzocht, kun je dit bericht negeren.\n"
+"\n"
+"Met vriendelijke groet,\n"
+"\n"
+"@@BLOGNAME"
+
+#: include/options.php:81
+#@ subme
+msgid "A short description shown at the top of the SubMe Form."
+msgstr "Een korte beschrijving dat getoond wordt op het SubMe formulier."
+
+#: include/settings.php:48
+#: include/settings.php:582
+#@ subme
+msgid "Subscriber Options"
+msgstr "Inschrijving Opties"
+
+#: include/settings.php:174
+#@ subme
+msgid "Delegate Subscriber Options to:"
+msgstr "Delegeer Inschrijfing Opties aan:"
+
+#: include/settings.php:341
+#@ subme
+msgid "Manage Subscription Emails"
+msgstr "Beheer Inschrijving E-mails"
+
+#: include/settings.php:347
+#@ subme
+msgid "Send Manage Subscription emails from:"
+msgstr "Verstuur Beheer Inschrijving emails namens:"
+
+#: include/settings.php:438
+#@ subme
+msgid "Send Confirmation emails via the queue:"
+msgstr "Verstuur Bevestiging emails via de wachtrij:"
+
+#: include/settings.php:447
+#@ subme
+msgid "Send Manage Subscription emails via the queue:"
+msgstr "Verstuur Beheer Inschrijving emails via de wachtrij:"
+
+#: include/settings.php:533
+#@ subme
+msgid "The subscription management link"
+msgstr "De inschrijving beheerlink"
+
+#: include/settings.php:557
+#@ subme
+msgid "Manage Subscription email"
+msgstr "Beheer Inschrijving email"
+
+#: include/settings.php:612
+#@ subme
+msgid "Authors and Categories for which notifications are sent"
+msgstr "Auteurs en Categoriën waarvoor notificaties worden verstuurd"
+
+#: include/settings.php:618
+#@ subme
+msgid "Authors"
+msgstr "Auteurs"
+
+#: include/settings.php:622
+#@ subme
+msgid "All authors"
+msgstr "Alle auteurs"
+
+#: include/settings.php:655
+#@ subme
+msgid "Categories"
+msgstr "Categoriën"
+
+#: include/settings.php:659
+#@ subme
+msgid "All categories"
+msgstr "Alle categoriën"
+
+#: include/settings.php:756
+#@ subme
+msgid "SubMe Widget"
+msgstr "SubMe Widget"
+
+#: include/settings.php:762
+#: include/settings.php:800
+#@ subme
+msgid "Display Unsubscribe/Manage Subscription button:"
+msgstr "Toon de Uitschrijven/Beheer Inschrijving knop:"
+
+#: include/settings.php:772
+#: include/settings.php:810
+#@ subme
+msgid "Display a description:"
+msgstr "Toon beschrijving:"
+
+#: include/settings.php:782
+#: include/settings.php:820
+#@ subme
+msgid "Description:"
+msgstr "Beschrijving:"
+
+#: include/settings.php:794
+#@ subme
+msgid "SubMe Form"
+msgstr "SubMe Formulier"
+
+#: include/settings.php:856
+#@ subme
+msgid "Custom CSS:"
+msgstr "Op maat CSS:"
+
+#: subme.php:525
+#@ subme
+msgid "Save changes"
+msgstr "Bewaar instellingen"
+
+#: subme.php:596
+#: subme.php:2550
+#@ subme
+msgid "Manage Subscription"
+msgstr "Beheer Inschrijving"
+
+#: subme.php:856
+#@ subme
+msgid "The custom stylesheet subme.css could not be openend. Please make sure that the file exists and that you have the right permissions. Creating the subme.css file should be done from the Appearance tab."
+msgstr "De stylesheet subme.css kan niet worden geopend. Zorg ervoor dat het bestand bestaat en dat de rechten goed staan ingesteld. Het aanmaken van het subme.css bestand kan gedaan worden via de Weergave tab."
+
+#: subme.php:860
+#@ subme
+msgid "The custom stylesheet subme.css seems to be outdated. Please make sure all custom CSS changes are done in the Appearance tab."
+msgstr "The stylesheet subme.css lijkt verouderd te zijn. Zorg ervoor dat alle CSS wijziging via de Weergave tab gedaan worden."
+
+#: subme.php:1797
+#@ subme
+msgid "Your changes have been saved."
+msgstr "Instellingen zijn opgeslagen."
+
+#: subme.php:2424
+#@ subme
+msgid "Failed to write to subme.css"
+msgstr "Fout bij het opslaan van subme.css"
+
+#: subme.php:1379
+#@ subme
+msgid "A message with a link to the manage your subscription has been sent!"
+msgstr "Een bericht met een link om je inschrijving te beheren is verstuurd!"
+
+#: subme.php:1774
+#@ subme
+msgid "Sorry, but there are too many authors selected."
+msgstr "Sorry, maar er zijn te veel auteurs geselecteerd."
+
+#: subme.php:1781
+#@ subme
+msgid "Sorry, but there are too many categories selected."
+msgstr "Sorry, maar er zijn te veel categoriën geselecteerd."
+
+#: include/options.php:84
+#@ subme
+msgid "A short description shown at the top of the SubMe Widget."
+msgstr "Een korte beschrijving dat getoond wordt in de SubMe Widget."
+
+#: include/settings.php:131
+#@ subme
+msgid "Allow users with a role equal to or higher than Contributor to manage specific settings of this plugin."
+msgstr "Sta gebruikers toe die een rol hebben die gelijk is aan of hoger is dan Schrijver om specifieke instelling aan te passen van deze plugin."
+
+#: include/settings.php:588
+#@ subme
+msgid "Allow subscribers to manage their subscriptions:"
+msgstr "Sta abonnees toe om hun inschrijving te beheren:"
+
+#: include/settings.php:598
+#@ subme
+msgid "Automatically subscribe upon user registration:"
+msgstr "Automatisch inschrijven na registratie:"
+
+#: subme.php:373
+#@ subme
+msgid "Choose to which authors or categories you would like to subscribe. Please note that you will receive notifications when you have subscribed to an author or a category. This means that you could receive a notification when a new post is published in a category you have subscribed to, but you have not subscribed to the author of the post."
+msgstr "Kies voor welke auteurs of categoriën je een notificatie wilt ontvangen. Let op dat je bijvoorbeeld een notificatie kunt ontvangen van een bericht in een categorie waar je voor ingeschreven bent, maar je niet bent ingeschreven voor de auteur van het bericht."
+
+#: subme.php:1344
+#@ subme
+msgid "Sorry, but this email address has not been confirmed yet."
+msgstr "Sorry, maar dit e-mailadres is nog niet bevestigd."
 

@@ -2,23 +2,25 @@
 Tags: cron, email, e-mail, mailing list, mailinglist, mail list, maillist, notify, notification, plain text, plaintext, post, posts, subscribe, subscribers, subscription
 Requires at least: 3.9
 Tested up to: 4.1
-Stable tag: 1.2.3
+Stable tag: 2.0
 License: GPL3
 
 SubMe notifies subscribers by email when a new post has been published.
 
 == Description ==
 
-SubMe provides a simple subscription management and email notification system for WordPress blogs that sends plain text email notifications to a list of subscribers when you publish a new post. SubMe allows you to send out badges of email by using the Wordpress cron functionality. Its purpose is to provide a simple notification system that works and is secure. Its purpose is not to be the most feature rich plugin.
+SubMe provides a simple subscription management and email notification system for WordPress blogs that sends plain text email notifications to a list of subscribers when you publish a new post. SubMe allows you to send out email bursts by using the Wordpress cron functionality. Its purpose is to provide a simple notification system that works and is secure. Its purpose is not to be the most feature rich plugin.
 
 = Features =
 
 * Email verification.
 * Subscription widget.
 * Customize email templates.
+* Custom CSS
 * Subscribers management.
+* Users can manage their subscription.
 * Delegate admin settings to different users.
-* Admin Notification of each new subscriber.
+* Admin Notification of new subscriber.
 * Rate limit subscriptions from the same IP address.
 * Cron functionality for sending out emails in bursts.
 * Export subscribers in CSV format.
@@ -49,9 +51,10 @@ If you do not have a Wordpress account, but you still have a suggestion or a que
 1. The SubMe -> Settings Admin page.
 2. The SubMe -> Settings Email page.
 3. The SubMe -> Settings Templates page.
-4. The SubMe -> Settings Appearance page.
-5. The Subscribers page to manage all subscribers.
-6. The Queue page to manage the emails that are scheduled to be sent out.
+4. The SubMe -> Settings Subscriber Options page.
+5. The SubMe -> Settings Appearance page.
+6. The Subscribers page to manage all subscribers.
+7. The Queue page to manage the emails that are scheduled to be sent out.
 
 == Frequently Asked Questions ==
 
