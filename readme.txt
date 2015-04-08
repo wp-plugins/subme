@@ -31,10 +31,6 @@ SubMe provides a simple subscription management and email notification system fo
 * English
 * Dutch (nl_NL)
 
-= Support =
-
-If you do not have a Wordpress account, but you still have a suggestion or a question, then please go [here.](https://supongo.org/subme/)
-
 == Installation ==
 
 1. Log in to your WordPress blog and visit Plugins->Add New.
