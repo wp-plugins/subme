@@ -5,7 +5,7 @@
  * Plugin URI:
  * Description: SubMe notifies subscribers by email when an new post has been published.
  * Version: 2.0
- * Author: Supongo.org
+ * Author: SubMe
  * Author URI: https://supongo.org/subme/
  * Licence: GPL3
  * Text Domain: SubMe
