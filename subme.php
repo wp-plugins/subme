@@ -2,11 +2,9 @@
 
 /*
  * Plugin Name: SubMe
- * Plugin URI:
  * Description: SubMe notifies subscribers by email when an new post has been published.
- * Version: 2.0
+ * Version: 2.0.1
  * Author: SubMe
- * Author URI: https://supongo.org/subme/
  * Licence: GPL3
  * Text Domain: SubMe
  */
@@ -14,9 +12,9 @@
 /* 
  * Version number used to check if database updates are necessary 
  */
-define( 'SMVERSION', '2.0' );
+define( 'SMVERSION', '2.0.1' );
 
-/* Copyright 2015 Supongo.org
+/* Copyright 2015 SubMe
  *
  * SubMe is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -786,7 +784,9 @@ class subme {
 				/* Update the stored version number to next release */
 				$this->sm_options['version'] = '2.0';
 			break;
-
+			case '2.0':
+				$this->sm_options['version'] = '2.0.1';
+			break;
 		}
 
 		update_option( 'subme_options', $this->sm_options );	
@@ -1605,7 +1605,7 @@ class subme {
 
 	/* Return a list of all Wordpress users, except users with the role Subscriber */
 	function get_users() {
-		$user = [];
+		$users = array();
 		$result = get_users( 'orderby=name&order=ASC' );
 
 		foreach( $result as $user ) {
