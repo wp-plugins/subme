@@ -1,3 +1,6 @@
+= 2.0.1 =
+* Fixed initialization of users variable in get_users() function.
+
 = 2.0 =
 * Added Subscriber Options to control which authors or blogs users can subscribe to.
 * Added option to automatically subscribe user upon user registration.
