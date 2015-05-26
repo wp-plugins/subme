@@ -3,7 +3,7 @@
 /*
  * Plugin Name: SubMe
  * Description: SubMe notifies subscribers by email when an new post has been published.
- * Version: 2.0.1
+ * Version: 2.0.2
  * Author: SubMe
  * Licence: GPL3
  * Text Domain: SubMe
@@ -12,7 +12,7 @@
 /* 
  * Version number used to check if database updates are necessary 
  */
-define( 'SMVERSION', '2.0.1' );
+define( 'SMVERSION', '2.0.2' );
 
 /* Copyright 2015 SubMe
  *
@@ -716,6 +716,7 @@ class subme {
 	/* Update SubMe database if needed. */
 	function update() {
 		global $wpdb;
+		$updated = false;
 
 		/* The version field was not set till version 1.2.3. This is needed for the update function to work properly. */
 		if ( ! isset( $this->sm_options['version'] ) ) $this->sm_options['version'] = '1.2.3';
@@ -785,8 +786,20 @@ class subme {
 				$this->sm_options['version'] = '2.0';
 			break;
 			case '2.0':
+				$updated = true;
+
+				/* Update the stored version number to next release */
 				$this->sm_options['version'] = '2.0.1';
+			case '2.0.1':
+				$updated = true;
+
+				/* Update the stored version number to next release */
+				$this->sm_options['version'] = '2.0.2';
 			break;
+		}
+
+		if ( true === $updated ) {
+			file_put_contents( SMPATH . '/css/subme.css', $this->minify_css( $this->sm_options['custom_css'] ) );
 		}
 
 		update_option( 'subme_options', $this->sm_options );	
@@ -2008,7 +2021,7 @@ class subme {
 							}
 						}
 
-						if( isset( $_POST['delegate_subscribers_to'] ) ) {
+						if ( isset( $_POST['delegate_subscribers_to'] ) ) {
 							$user_id = false;
 							foreach( $users as $user ) {
 								if ( wp_hash( $user->ID ) === $_POST['delegate_subscribers_to'] ) {
@@ -2022,7 +2035,7 @@ class subme {
 							}
 						}
 
-						if( isset( $_POST['delegate_queue_to'] ) ) {
+						if ( isset( $_POST['delegate_queue_to'] ) ) {
 							$user_id = false;
 							foreach( $users as $user ) {
 								if ( wp_hash( $user->ID ) === $_POST['delegate_queue_to'] ) {
@@ -2033,6 +2046,18 @@ class subme {
 
 							if ( $user_id ) {
 								$this->sm_options['delegate_queue_to'] = $user_id;
+							}
+						}
+
+						if ( isset( $_POST['subscriber_items_per_page'] ) ) {
+							if ( 5 <= ( int ) $_POST['subscriber_items_per_page'] && 100 >= ( int ) $_POST['subscriber_items_per_page'] && 0 === ( int ) $_POST['subscriber_items_per_page'] % 5 ) {
+								$this->sm_options['subscriber_items_per_page'] = ( int ) $_POST['subscriber_items_per_page'];
+							}
+						}
+
+						if ( isset( $_POST['queue_items_per_page'] ) ) {
+							if ( 5 <= ( int ) $_POST['queue_items_per_page'] && 100 >= ( int ) $_POST['queue_items_per_page'] && 0 === ( int ) $_POST['queue_items_per_page'] % 5 ) {
+								$this->sm_options['queue_items_per_page'] = ( int ) $_POST['queue_items_per_page'];
 							}
 						}
 
@@ -2455,7 +2480,7 @@ class subme_widget extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, array( 'title' => '' ) );
 		$title = $instance['title'];
 ?>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>">Title: <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" /></label></p>
+		<p><label for="<?php echo esc_attr( $this->get_field_id('title') ); ?>">Title: <input class="widefat" id="<?php echo esc_attr( $this->get_field_id('title') ); ?>" name="<?php echo esc_attr( $this->get_field_name('title') ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" /></label></p>
 <?php
 	}
 
@@ -2465,7 +2490,7 @@ class subme_widget extends WP_Widget {
 
 		extract( $args );
 
-		$title = apply_filters( 'widget_title', 'Subscribe' );
+		$title = apply_filters( 'widget_title', $instance['title'] );
 
 		/* Before and after widget arguments are defined by themes */
 		echo $args['before_widget'];

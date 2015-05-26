@@ -237,6 +237,48 @@ if ( isset( $_POST['form'] ) ) {
 							</table>
 						</div>
 					</div>
+
+					<div class="postbox">
+						<h3 class="hndle"><span><?php echo __( 'Admin display options', 'subme' ); ?></span></h3>
+						<div class="inside">
+							<table class="form-table">
+							<tbody>
+								<tr>
+									<th>
+										<?php echo __( 'Subscriber items per page:', 'subme' ); ?>
+									</th>
+									<td>
+										<select name="subscriber_items_per_page">
+										<?php
+										for ( $i = 5; $i <= 100; $i += 5 ) {
+											echo '<option value="' . esc_attr( $i ) . '" ';
+											$this->selected( $this->sm_options['subscriber_items_per_page'] == $i ? true : false );
+											echo '>' . esc_html( $i ) . '</option>';
+										}
+										?>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<th>
+										<?php echo __( 'Queue items per page:', 'subme' ); ?>
+									</th>
+									<td>
+										<select name="queue_items_per_page">
+										<?php
+										for ( $i = 5; $i <= 100; $i += 5 ) {
+											echo '<option value="' . esc_attr( $i ) . '" ';
+											$this->selected( $this->sm_options['queue_items_per_page'] == $i ? true : false );
+											echo '>' . esc_html( $i ) . '</option>';
+										}
+										?>
+										</select>
+									</td>
+								</tr>
+							</tbody>
+							</table>
+						</div>
+					</div>
 				</div>
 <?php
 			break;

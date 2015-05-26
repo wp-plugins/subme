@@ -1,3 +1,8 @@
+= 2.0.2 =
+* Disable the Unsubscribe/Manage Subscription widget button by default.
+* Fixed Widget title not showing properly.
+* Added Admin option to change the number of items displayed on the Subscribers and Queue pages.
+
 = 2.0.1 =
 * Fixed initialization of users variable in get_users() function.
 

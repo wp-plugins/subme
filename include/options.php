@@ -14,6 +14,8 @@
                 if ( ! isset( $this->sm_options['delegate_appearance_to'] ) ) $this->sm_options['delegate_appearance_to'] = '';
 		if ( ! isset( $this->sm_options['delegate_subscribers_to'] ) ) $this->sm_options['delegate_subscribers_to'] = '';
 		if ( ! isset( $this->sm_options['delegate_queue_to'] ) ) $this->sm_options['delegate_queue_to'] = '';
+		if ( ! isset( $this->sm_options['subscriber_items_per_page'] ) ) $this->sm_options['subscriber_items_per_page'] = '5';
+		if ( ! isset( $this->sm_options['queue_items_per_page'] ) ) $this->sm_options['queue_items_per_page'] = '5';
 
 		/* Email settings tab */
                 if ( ! isset( $this->sm_options['email_notification'] ) ) $this->sm_options['email_notification'] = 'both';
@@ -79,7 +81,7 @@ Best regards,
 		if ( ! isset( $this->sm_options['show_form_unsubscribe'] ) ) $this->sm_options['show_form_unsubscribe'] = 'yes';
 		if ( ! isset( $this->sm_options['enable_form_description'] ) ) $this->sm_options['enable_form_description'] = 'no';
 		if ( ! isset( $this->sm_options['form_description'] ) ) $this->sm_options['form_description'] = __( 'A short description shown at the top of the SubMe Form.', 'subme' );
-		if ( ! isset( $this->sm_options['show_widget_unsubscribe'] ) ) $this->sm_options['show_widget_unsubscribe'] = 'yes';
+		if ( ! isset( $this->sm_options['show_widget_unsubscribe'] ) ) $this->sm_options['show_widget_unsubscribe'] = 'no';
 		if ( ! isset( $this->sm_options['enable_widget_description'] ) ) $this->sm_options['enable_widget_description'] = 'no';
 		if ( ! isset( $this->sm_options['widget_description'] ) ) $this->sm_options['widget_description'] = __( 'A short description shown at the top of the SubMe Widget.', 'subme' );
 		if ( ! isset( $this->sm_options['custom_css'] ) ) $this->sm_options['custom_css'] = '/* SubMe backend */

@@ -49,11 +49,8 @@ if ( strlen( $sm_error ) > 0 ) {
 			<div class="tablenav top">
 
 			<?php
-				/* Calculate some pagination stuff */
-				$per_page = 5;
-
 				$total = absint( $this->total_queue() );
-				$max_pages = ceil( $total / $per_page );
+				$max_pages = ceil( $total / $this->sm_options['queue_items_per_page'] );
 				if ( $max_pages < 1 ) {
 					$max_pages = 1;
 				}
@@ -299,8 +296,8 @@ if ( strlen( $sm_error ) > 0 ) {
 		
 					$table = $wpdb->prefix . 'subme_queue';
 					$query = $wpdb->prepare( "SELECT id, sender, recipient, subject FROM $table ORDER BY " . $order_table . ' ' . ( 'asc' === $order ? 'ASC' : 'DESC' ) . " LIMIT %d, %d",
-						(($page - 1) * $per_page),
-						$per_page );
+						( ( $page - 1 ) * $this->sm_options['queue_items_per_page'] ),
+						$this->sm_options['queue_items_per_page'] );
 					$results = $wpdb->get_results( $query );
 					
 					if ( $wpdb->num_rows > 0 ) {
