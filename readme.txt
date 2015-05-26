@@ -1,8 +1,8 @@
 === SubMe ===
 Tags: cron, email, e-mail, mailing list, mailinglist, mail list, maillist, notify, notification, plain text, plaintext, post, posts, subscribe, subscribers, subscription
 Requires at least: 3.9
-Tested up to: 4.2
-Stable tag: 2.0.1
+Tested up to: 4.2.2
+Stable tag: 2.0.2
 License: GPL3
 
 SubMe notifies subscribers by email when a new post has been published.

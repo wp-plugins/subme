@@ -95,11 +95,8 @@ if ( strlen( $sm_error ) > 0 ) {
 			<div class="tablenav top">
 
 			<?php
-				/* Calculate some pagination stuff */
-				$per_page = 5;
-
 				$total = absint( $this->total_subscribers() );
-				$max_pages = ceil( $total / $per_page );
+				$max_pages = ceil( $total / $this->sm_options['subscriber_items_per_page'] );
 				if ( $max_pages < 1 ) {
 					$max_pages = 1;
 				}
@@ -280,8 +277,8 @@ if ( strlen( $sm_error ) > 0 ) {
 				<?php
 					$table = $wpdb->prefix . 'subme';
 					$query = $wpdb->prepare( "SELECT id, active, email, timestamp FROM $table ORDER BY active, " . ( 'email' === $orderby ? 'email' : 'timestamp' ) . ' ' . ( 'asc' === $order ? 'ASC' : 'DESC' ) . ' ' . "LIMIT %d, %d",
-						( ( $page - 1 ) * $per_page ),
-						$per_page );
+						( ( $page - 1 ) * $this->sm_options['subscriber_items_per_page'] ),
+						$this->sm_options['subscriber_items_per_page'] );
 					$results = $wpdb->get_results( $query );
 					
 					if ( $wpdb->num_rows > 0 ) {
